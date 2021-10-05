@@ -1,9 +1,21 @@
-import { ParallaxBanner, Parallax } from "react-scroll-parallax";
+import { ParallaxBanner } from "react-scroll-parallax";
 import Container from "./Container";
 import styles from "styles/Banner.module.scss";
 import Image from "next/image";
 import BannerImage from "../../public/images/cyber-bg.jpg";
 import LogoImage from "../../public/images/logo.png";
+
+const HomeBannerImg = () => (
+  <div className={styles["banner-image-wrapper"]}>
+    <Image
+      src={BannerImage}
+      alt="Saiba Gang"
+      placeholder="blur"
+      layout="fill"
+      objectFit="cover"
+    />
+  </div>
+);
 
 export default function Banner({ size }) {
   if (size?.width < 720) {
@@ -36,15 +48,18 @@ export default function Banner({ size }) {
 
   return (
     <ParallaxBanner
+      className="foo"
       layers={[
         {
-          image: "/images/cyber-bg.jpg",
           amount: 1,
           expanded: false,
+          children: <HomeBannerImg />,
         },
       ]}
       style={{
         height: "100vh",
+        position: "relative",
+        width: "100%",
       }}
     >
       <div className={styles["banner-container"]}>

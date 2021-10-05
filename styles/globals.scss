@@ -75,17 +75,6 @@ p {
   }
 }
 
-.background-section {
-  background-image: url("/images/underground-cyberpunk.jpg");
-  background-size: cover;
-  background-position: center center;
-  height: 800px;
-  width: 100%;
-  margin-top: 4rem;
-  @include respond-below(md) {
-    height: 300px;
-  }
-}
 .math-wallet-icon {
   background: #000000;
 }

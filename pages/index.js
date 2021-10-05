@@ -4,6 +4,7 @@ import Banner from "components/Banner";
 import Container from "components/Container";
 import Roadmap from "components/Roadmap";
 import FAQ from "components/FAQ";
+import BackgroundSection from "components/BackgroundSection";
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 import useWindowSize from "../src/hooks/useWindowSize";
@@ -168,7 +169,7 @@ export default function Home() {
           <FAQ />
         </Section>
       </Container>
-      <div className="background-section"></div>
+      <BackgroundSection />
     </Layout>
   );
 }
