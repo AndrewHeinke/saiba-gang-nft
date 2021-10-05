@@ -108,6 +108,9 @@ p {
   display: grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @include respond-below(sm) {
+    grid-template-columns: none;
+  }
 }
 
 .overflow-scroll {

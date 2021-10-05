@@ -79,7 +79,7 @@ const Logo = ({ ...restOfProps }) => (
 // };
 
 export default function Header({ size }) {
-  if (size?.width < 720) {
+  if (size?.width < 992) {
     return (
       <header className={styles["mobile-header"]}>
         <div className={styles["mobile-header-container"]}>
