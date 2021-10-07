@@ -64,7 +64,7 @@ export default function RarityCarousel() {
       <Swiper
         className="rarity-swiper"
         navigation={true}
-        slidesPerView={3}
+        slidesPerView={"auto"}
         effect={"coverflow"}
         coverflowEffect={{
           rotate: 50,
@@ -73,7 +73,6 @@ export default function RarityCarousel() {
           modifier: 1,
           slideShadows: true,
         }}
-        speed={500}
         initialSlide={0}
         grabCursor={true}
         centeredSlides={true}
@@ -93,24 +92,24 @@ export default function RarityCarousel() {
             </SwiperSlide>
           );
         })}
-        <div>
-          {activeIndex < imageArray.length && (
-            <div>
-              <p>{getName(imageArray[activeIndex])}</p>
-              <p>
-                {getRarityPercent(imageArray[activeIndex], config.filter)} have
-                this trait
-              </p>
-            </div>
-          )}
-          <p>{config.filter.toLocaleUpperCase()}</p>
-          <p>
-            {config.rarities === "All"
-              ? getName(getRarityName(imageArray[activeIndex]).toString())
-              : config.rarities.toUpperCase()}
-          </p>
-        </div>
       </Swiper>
+      <div>
+        {activeIndex < imageArray.length && (
+          <div>
+            <p>{getName(imageArray[activeIndex])}</p>
+            <p>
+              {getRarityPercent(imageArray[activeIndex], config.filter)} have
+              this trait
+            </p>
+          </div>
+        )}
+        <p>{config.filter.toLocaleUpperCase()}</p>
+        <p>
+          {config.rarities === "All"
+            ? getName(getRarityName(imageArray[activeIndex]).toString())
+            : config.rarities.toUpperCase()}
+        </p>
+      </div>
     </div>
   );
 }
