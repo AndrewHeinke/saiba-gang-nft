@@ -32,6 +32,7 @@ export default function Banner({ size }) {
         />
         <div className={styles["mobile-banner-content"]}>
           <div className={styles["mobile-banner-title"]}>
+            <h1 className="sr-only">Saiba Gang</h1>
             <Image
               priority={true}
               alt="Saiba Gang Logo"
@@ -63,6 +64,7 @@ export default function Banner({ size }) {
       }}
     >
       <div className={styles["banner-container"]}>
+        <h1 className="sr-only">Saiba Gang</h1>
         <Container>
           <div className={styles["banner-content"]}>
             <div className={styles["banner-title"]}>

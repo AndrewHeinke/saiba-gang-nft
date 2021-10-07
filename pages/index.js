@@ -5,6 +5,7 @@ import Container from "components/Container";
 import Roadmap from "components/Roadmap";
 import FAQ from "components/FAQ";
 import BackgroundSection from "components/BackgroundSection";
+import RarityCarousel from "components/RarityCarousel";
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 import useWindowSize from "../src/hooks/useWindowSize";
@@ -101,6 +102,7 @@ export default function Home() {
         </Section>
         <Section id="rarity">
           <h2>Rarity</h2>
+          <RarityCarousel />
         </Section>
         <Section id="team">
           <h2>The Team</h2>
