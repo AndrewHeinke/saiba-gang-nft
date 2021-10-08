@@ -107,9 +107,9 @@ p {
 .grid {
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  @include respond-below(sm) {
-    grid-template-columns: none;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  @include respond-below(lg) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 
@@ -168,7 +168,7 @@ p {
     width: 1em;
     height: 1em;
     margin-top: 0.25rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     flex-shrink: 0;
   }
 }
