@@ -43,7 +43,7 @@ export default function Home() {
         </Container>
         <div className="overflow-scroll">
           <Parallax
-            x={[-50, 0]}
+            x={[-30, 0]}
             disabled={size?.width < 720}
             styleInner={{ display: "flex" }}
           >
