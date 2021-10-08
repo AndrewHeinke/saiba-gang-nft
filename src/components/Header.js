@@ -79,7 +79,7 @@ const Logo = ({ ...restOfProps }) => (
 // };
 
 export default function Header({ size }) {
-  if (size?.width < 720) {
+  if (size?.width < 992) {
     return (
       <header className={styles["mobile-header"]}>
         <div className={styles["mobile-header-container"]}>
@@ -127,6 +127,18 @@ export default function Header({ size }) {
                   Roadmap
                 </ScrollLink>
               </li>
+              {/* <li className={styles["header-link"]}>
+                <ScrollLink
+                  activeClass={styles["header-link--active"]}
+                  to="rarity"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={350}
+                >
+                  Rarity
+                </ScrollLink>
+              </li> */}
               <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
@@ -139,6 +151,18 @@ export default function Header({ size }) {
                   Team
                 </ScrollLink>
               </li>
+              {/* <li className={styles["header-link"]}>
+                <ScrollLink
+                  activeClass={styles["header-link--active"]}
+                  to="faq"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={350}
+                >
+                  FAQ
+                </ScrollLink>
+              </li> */}
             </ul>
           </nav>
         </div>
@@ -176,6 +200,18 @@ export default function Header({ size }) {
                 Roadmap
               </ScrollLink>
             </li>
+            {/* <li className={styles["header-link"]}>
+              <ScrollLink
+                activeClass={styles["header-link--active"]}
+                to="rarity"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={350}
+              >
+                Rarity
+              </ScrollLink>
+            </li> */}
             <li className={styles["header-link"]}>
               <ScrollLink
                 activeClass={styles["header-link--active"]}
@@ -188,6 +224,18 @@ export default function Header({ size }) {
                 Team
               </ScrollLink>
             </li>
+            {/* <li className={styles["header-link"]}>
+              <ScrollLink
+                activeClass={styles["header-link--active"]}
+                to="faq"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={350}
+              >
+                FAQs
+              </ScrollLink>
+            </li> */}
             {/* <li className={styles["header-link"]}>
               <ConnectButton />
             </li> */}

@@ -3,6 +3,9 @@ import Section from "components/Section";
 import Banner from "components/Banner";
 import Container from "components/Container";
 import Roadmap from "components/Roadmap";
+import FAQ from "components/FAQ";
+import BackgroundSection from "components/BackgroundSection";
+import RarityCarousel from "components/RarityCarousel";
 import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 import useWindowSize from "../src/hooks/useWindowSize";
@@ -40,7 +43,7 @@ export default function Home() {
         </Container>
         <div className="overflow-scroll">
           <Parallax
-            x={[-50, 0]}
+            x={[-30, 0]}
             disabled={size?.width < 720}
             styleInner={{ display: "flex" }}
           >
@@ -97,6 +100,10 @@ export default function Home() {
           <h2>Roadmap</h2>
           <Roadmap />
         </Section>
+        {/* <Section id="rarity">
+          <h2>Rarity</h2>
+          <RarityCarousel />
+        </Section> */}
         <Section id="team">
           <h2>The Team</h2>
           <div className="grid">
@@ -157,10 +164,33 @@ export default function Home() {
                 Community Manager
               </a>
             </div>
+            <div>
+              <Image
+                src="/images/Jessica.png"
+                alt="Jessica Saiba Gang"
+                height={500}
+                width={500}
+              />
+              <a
+                rel="noreferrer"
+                target="_blank"
+                href="https://twitter.com/JessArtemisia"
+                className="twitterLink"
+              >
+                <Twitter />
+                Jessica
+                <br />
+                Loremaster
+              </a>
+            </div>
           </div>
         </Section>
+        {/* <Section id="faq">
+          <h2>FAQs</h2>
+          <FAQ />
+        </Section> */}
       </Container>
-      <div className="background-section"></div>
+      <BackgroundSection />
     </Layout>
   );
 }

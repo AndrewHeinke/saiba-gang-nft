@@ -35,6 +35,11 @@
     flex-shrink: 0;
     margin-right: 2rem;
   }
+  &-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .mobile-banner {

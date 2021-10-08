@@ -13,6 +13,12 @@ body {
   background-color: var(--primary-dark);
 }
 
+button {
+  font-family: "BergenMono-Regular", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
 h1,
 h2 {
   color: var(--pink);
@@ -69,17 +75,6 @@ p {
   }
 }
 
-.background-section {
-  background-image: url("/images/underground-cyberpunk.jpg");
-  background-size: cover;
-  background-position: center center;
-  height: 800px;
-  width: 100%;
-  margin-top: 4rem;
-  @include respond-below(md) {
-    height: 300px;
-  }
-}
 .math-wallet-icon {
   background: #000000;
 }
@@ -112,7 +107,13 @@ p {
 .grid {
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  @include respond-below(lg) {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
+  @include respond-below(md) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
 .overflow-scroll {
@@ -121,7 +122,7 @@ p {
   position: relative;
   overflow: hidden;
   @include respond-below(md) {
-    height: 300px;
+    height: 200px;
     overflow-x: scroll;
   }
   .shadow {
@@ -136,14 +137,14 @@ p {
     }
   }
   .gallery-img {
-    margin: 0 2rem;
+    margin: 0;
     flex-shrink: 0;
     position: relative;
     width: 400px;
     height: 400px;
     @include respond-below(md) {
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
     }
   }
 }
@@ -170,7 +171,66 @@ p {
     width: 1em;
     height: 1em;
     margin-top: 0.25rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     flex-shrink: 0;
   }
+}
+
+.collapse-icon {
+  width: 1em;
+  height: 1em;
+  margin-right: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.rarity-swiper {
+  width: 100%;
+  padding: 50px 0 !important;
+
+  .swiper-slide {
+    opacity: 0;
+    transition: opacity 0.5s;
+    width: 300px !important;
+    height: 300px !important;
+  }
+
+  .swiper-slide-next {
+    opacity: 0.3;
+    transition: 0.25s ease-in;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    z-index: -1;
+  }
+  .swiper-slide-prev {
+    opacity: 0.3;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    transition: 0.25s ease-in;
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+  }
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  cursor: not-allowed !important;
+  z-index: 100;
 }
