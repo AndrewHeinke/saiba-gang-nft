@@ -156,13 +156,37 @@ p {
   }
 }
 
+.team-member-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: ease 0.3s;
+  &:hover {
+    .twitterLink {
+      background: #13153f;
+    }
+  }
+}
+
 .twitterLink {
   color: var(--yellow);
   font-size: 1.25rem;
   text-decoration: none;
   cursor: pointer;
+  padding: 0.5rem 0;
   display: flex;
   line-height: 1.5;
+  &::before {
+    content: "";
+    cursor: inherit;
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+  }
   &:hover {
     color: var(--pink);
     text-decoration: underline;

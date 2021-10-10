@@ -107,7 +107,7 @@ export default function Home() {
         <Section id="team">
           <h2>The Team</h2>
           <div className="grid">
-            <div>
+            <div className="team-member-card">
               <Image
                 src="/images/Zooks.png"
                 alt="Zooks Saiba Gang"
@@ -126,7 +126,7 @@ export default function Home() {
                 Founder / Visual Director
               </a>
             </div>
-            <div>
+            <div className="team-member-card">
               <Image
                 src="/images/Leisure-Boi.png"
                 alt="Saiba Gang"
@@ -145,7 +145,7 @@ export default function Home() {
                 Lead Developer
               </a>
             </div>
-            <div>
+            <div className="team-member-card">
               <Image
                 src="/images/Goku.png"
                 alt="Goku Saiba Gang"
@@ -164,7 +164,7 @@ export default function Home() {
                 Community Manager
               </a>
             </div>
-            <div>
+            <div className="team-member-card">
               <Image
                 src="/images/Jessica.png"
                 alt="Jessica Saiba Gang"
@@ -178,7 +178,7 @@ export default function Home() {
                 className="twitterLink"
               >
                 <Twitter />
-                Jessica
+                Jessica Artemisia
                 <br />
                 Loremaster
               </a>
