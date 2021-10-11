@@ -10,9 +10,18 @@ export const getName = (value) => {
   return "";
 };
 
-export const getRarityName = (value) => {
-  if (value === undefined) return "";
-  return value.replace(".png", "").toLowerCase();
+export const getRarityName = (arr, value) => {
+  let rarityCategory;
+  Object.keys(arr).map((key) => {
+    const rarityArray = arr[key];
+    rarityArray.forEach((item) => {
+      if (item === value) {
+        rarityCategory = key;
+      }
+    });
+  });
+
+  return rarityCategory;
 };
 
 export const getRarityPercent = (value, category) => {

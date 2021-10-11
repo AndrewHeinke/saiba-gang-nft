@@ -3,16 +3,18 @@ export const imageBasePath =
 
 export const traitsTable = {
   fruit: {
-    common: [
-      "coconut.png",
-      "kiwi-fruit.png",
-      "red-apple.png",
-      "green-apple.png",
-    ],
-    uncommon: ["pineapple.png"],
-    rare: ["mango.png"],
-    superrare: ["tangerine.png"],
-    mythic: ["pear.png"],
+    common: ["coconut", "kiwi-fruit", "red-apple", "green-apple"],
+    uncommon: ["pineapple"],
+    rare: ["mango"],
+    superrare: ["tangerine"],
+    mythic: ["pear"],
+  },
+  veggie: {
+    common: ["hot-pepper", "cucumber", "broccoli", "avocado"],
+    uncommon: ["potato"],
+    rare: ["carrot"],
+    superrare: ["tomato"],
+    mythic: ["eggplant"],
   },
 };
 
@@ -26,5 +28,15 @@ export const rarityTable = {
     mango: "10%",
     tangerine: "7%",
     pear: "3%",
+  },
+  veggie: {
+    avocado: "30%",
+    "hot-pepper": "30%",
+    broccoli: "35%",
+    cucumber: "35%",
+    potato: "20%",
+    carrot: "10%",
+    tomato: "7%",
+    eggplant: "3%",
   },
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { imageBasePath, traitsTable } from "../../../data/data.js";
 import { getName, getRarityName, getRarityPercent } from "./rarityUtils";
+import classNames from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectCoverflow, Navigation } from "swiper";
 import "swiper/css";
@@ -28,6 +29,16 @@ export default function RarityCarousel() {
     }
   };
 
+  const handleAttribute = (e) => {
+    setConfig({
+      ...config,
+      filter: e.target.value,
+    });
+    if (swiper) {
+      swiper.slideTo(0);
+    }
+  };
+
   useEffect(() => {
     const trait = traitsTable[config.filter.toLowerCase()];
     const selectedRarity = config.rarities.replace(" ", "").toLowerCase();
@@ -47,18 +58,47 @@ export default function RarityCarousel() {
     );
   }
 
+  const classes = classNames("label-wrapper", {
+    [`${getRarityName(
+      traitsTable[config.filter.toLowerCase()],
+      imageArray[activeIndex]
+    )} `]: config.rarities === "ALL",
+    common: config.rarities === "COMMON",
+    uncommon: config.rarities === "UNCOMMON",
+    rare: config.rarities === "RARE",
+    superrare: config.rarities === "SUPERRARE",
+    mythic: config.rarities === "MYTHIC",
+  });
+
   return (
     <div className="rarities-wrapper">
       <div className="select-wrapper">
-        <label htmlFor="raritySelect">Rarity</label>
-        <select name="raritySelect" id="raritySelect" onChange={handleRarity}>
-          <option value="ALL">All</option>
-          <option value="COMMON">Common</option>
-          <option value="UNCOMMON">Uncommon</option>
-          <option value="RARE">Rare</option>
-          <option value="SUPERRARE">Superrare</option>
-          <option value="MYTHIC">Mythic</option>
-        </select>
+        <div>
+          <label className="sr-only" htmlFor="attributeSelect">
+            Attribute
+          </label>
+          <select
+            name="attributeSelect"
+            id="attributeSelect"
+            onChange={handleAttribute}
+          >
+            <option value="FRUIT">Fruit</option>
+            <option value="VEGGIE">Veggie</option>
+          </select>
+        </div>
+        <div>
+          <label className="sr-only" htmlFor="raritySelect">
+            Rarity
+          </label>
+          <select name="raritySelect" id="raritySelect" onChange={handleRarity}>
+            <option value="ALL">All</option>
+            <option value="COMMON">Common</option>
+            <option value="UNCOMMON">Uncommon</option>
+            <option value="RARE">Rare</option>
+            <option value="SUPERRARE">Superrare</option>
+            <option value="MYTHIC">Mythic</option>
+          </select>
+        </div>
       </div>
 
       <Swiper
@@ -88,12 +128,12 @@ export default function RarityCarousel() {
         {imageArray.map((value, index) => {
           return (
             <SwiperSlide key={index}>
-              <img src={`${imageBasePath}${value}`} alt="" />
+              <img src={`${imageBasePath}${value}.png`} alt="" />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <div>
+      <div className={classes}>
         {activeIndex < imageArray.length && (
           <div>
             <p>{getName(imageArray[activeIndex])}</p>
@@ -105,8 +145,11 @@ export default function RarityCarousel() {
         )}
         <p>{config.filter.toLocaleUpperCase()}</p>
         <p>
-          {config.rarities === "All"
-            ? getName(getRarityName(imageArray[activeIndex]).toString())
+          {config.rarities === "ALL"
+            ? getRarityName(
+                traitsTable[config.filter.toLowerCase()],
+                imageArray[activeIndex].toString()
+              ).toUpperCase()
             : config.rarities.toUpperCase()}
         </p>
       </div>
