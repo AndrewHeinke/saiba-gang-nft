@@ -185,10 +185,10 @@ export default function Home() {
             </div>
           </div>
         </Section>
-        {/* <Section id="faq">
+        <Section id="faq">
           <h2>FAQs</h2>
           <FAQ />
-        </Section> */}
+        </Section>
       </Container>
       <BackgroundSection />
     </Layout>

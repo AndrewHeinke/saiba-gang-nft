@@ -203,7 +203,13 @@ p {
 .collapse-icon {
   width: 1em;
   height: 1em;
+  margin-top: 0.125em;
+  flex-shrink: 0;
+  align-self: flex-start;
   margin-right: 1rem;
+  @include respond-below(sm) {
+    margin-right: 0.5rem;
+  }
 }
 
 .sr-only {

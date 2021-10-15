@@ -76,14 +76,14 @@
       padding: 0 1rem;
     }
   }
+
   &-link {
     margin-right: 1rem;
     @include respond-below(sm) {
-      margin-right: 0;
-      width: 100%;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
       display: flex;
       justify-content: center;
-      font-size: 0.875rem;
     }
     a {
       font-family: "Oxta", sans-serif;
@@ -94,6 +94,12 @@
       text-transform: uppercase;
       padding: 1rem;
       cursor: pointer;
+
+      @include respond-below(sm) {
+        padding: 1rem 0.5rem;
+        font-weight: 400;
+        font-size: 12px;
+      }
 
       &:hover {
         color: var(--pink);
@@ -108,50 +114,6 @@
         }
       }
     }
-
-    // &-link {
-    //   margin-right: 1rem;
-    //   @include respond-below(md) {
-    //     margin-left: -0.5rem;
-    //     margin-right: -0.5rem;
-    //     display: flex;
-    //     justify-content: center;
-    //   }
-    //   a {
-    //     font-family: "Oxta", sans-serif;
-    //     position: relative;
-    //     display: flex;
-    //     font-weight: bold;
-    //     align-items: center;
-    //     text-transform: uppercase;
-    //     padding: 1rem;
-    //     cursor: pointer;
-
-    //     @include respond-below(md) {
-    //       padding: 1rem 0.5rem;
-    //       font-family: "BergenMono-Regular";
-    //       font-weight: 400;
-    //       font-size: 1rem;
-    //     }
-
-    //     @include respond-below(sm) {
-    //       padding: 0.5rem;
-    //       font-size: 14px;
-    //     }
-
-    //     &:hover {
-    //       color: var(--pink);
-    //       &:after {
-    //         position: absolute;
-    //         content: "";
-    //         left: 0;
-    //         right: 0;
-    //         bottom: 0;
-    //         height: 2px;
-    //         background-color: var(--pink);
-    //       }
-    //     }
-    //   }
 
     &--active {
       color: var(--pink);

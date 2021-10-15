@@ -1,6 +1,24 @@
+@import "./mixins";
 .roadmap {
   margin-left: 12px;
   margin-top: 2rem;
+  h2 {
+    font-size: 2.5rem;
+    margin-left: -0.5rem;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    @include respond-below(sm) {
+      font-size: 1.75rem;
+      text-shadow: 0 0 2px #eebfec, 0 0 7px #d86ed5, 0 0 15px #d86ed5,
+        0 0 24px #a851b2;
+    }
+  }
+  a {
+    color: var(--light-pink);
+    &:hover {
+      color: var(--pink);
+    }
+  }
   &-step {
     position: relative;
     padding-left: 2rem;

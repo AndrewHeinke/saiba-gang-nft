@@ -151,7 +151,7 @@ export default function Header({ size }) {
                   Team
                 </ScrollLink>
               </li>
-              {/* <li className={styles["header-link"]}>
+              <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
                   to="faq"
@@ -162,7 +162,7 @@ export default function Header({ size }) {
                 >
                   FAQ
                 </ScrollLink>
-              </li> */}
+              </li>
             </ul>
           </nav>
         </div>
@@ -224,7 +224,7 @@ export default function Header({ size }) {
                 Team
               </ScrollLink>
             </li>
-            {/* <li className={styles["header-link"]}>
+            <li className={styles["header-link"]}>
               <ScrollLink
                 activeClass={styles["header-link--active"]}
                 to="faq"
@@ -235,7 +235,7 @@ export default function Header({ size }) {
               >
                 FAQs
               </ScrollLink>
-            </li> */}
+            </li>
             {/* <li className={styles["header-link"]}>
               <ConnectButton />
             </li> */}
