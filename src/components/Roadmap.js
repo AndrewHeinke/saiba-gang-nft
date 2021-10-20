@@ -29,12 +29,12 @@ export default function Roadmap() {
         <RoadmapStep
           title="Begin Building the Saiba Gang Community"
           description="Begin establishing a strong Saiba Gang community organically. We want to draw people to the project with our art, and then we want to hook them with our vision, team, and potential. Lore details being crafted by our loremaster, who is a published fantasy author, will be continually announced in the weeks leading up to launch."
-          status="active"
+          status="complete"
         />
         <RoadmapStep
           title="Lore Prompts"
           description="The Saiba Gang community will be given weekly prompts of lore topics to write in what they think would make a good addition to the Saiba Gang universe. Our team will curate answers, and give the community a vote on which answers to the prompt they like the best. The winner’s response will be officially made canon in the Saiba Gang lore. The member who submitted the answer will be recognized for their addition to the Saiba Gang story, and rewarded."
-          status="incomplete"
+          status="complete"
         />
         <RoadmapStep
           title="Mint Launch"
@@ -59,10 +59,10 @@ export default function Roadmap() {
                 @ExiledApes
               </a>
               , who are both accomplished technical minds in the Solana space.
-              Our goal mint date is at the end of October / early November.
+              Our official mint date is October 27th 2021.
             </>
           }
-          status="incomplete"
+          status="active"
         />
         <RoadmapStep
           title="Establish a Community Fund"
