@@ -12,7 +12,7 @@ export default function FAQ() {
         </p>
       </Collapse>
       <Collapse title="When is the launch?">
-        <p>Our official mint date is October 27th 2021.</p>
+        <p>Our official mint date is November 1st 2021 at 2:00PM EST.</p>
       </Collapse>
       <Collapse title="How much is the mint?">
         <p>

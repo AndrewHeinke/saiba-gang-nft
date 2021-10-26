@@ -59,7 +59,7 @@ export default function Roadmap() {
                 @ExiledApes
               </a>
               , who are both accomplished technical minds in the Solana space.
-              Our official mint date is October 27th 2021.
+              Our official mint date is November 1st 2021 at 2:00PM EST.
             </>
           }
           status="active"
