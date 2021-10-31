@@ -4,6 +4,7 @@ import styles from "styles/Banner.module.scss";
 import Image from "next/image";
 import BannerImage from "../../public/images/cyber-bg.jpg";
 import LogoImage from "../../public/images/logo.png";
+import MintCountdown from "./MintCountdown";
 
 const HomeBannerImg = () => (
   <div className={styles["banner-image-wrapper"]}>
@@ -33,14 +34,7 @@ export default function Banner({ size }) {
         <div className={styles["mobile-banner-content"]}>
           <div className={styles["mobile-banner-title"]}>
             <h1 className="sr-only">Saiba Gang</h1>
-            <Image
-              priority={true}
-              alt="Saiba Gang Logo"
-              layout="responsive"
-              width={800}
-              height={342}
-              src={LogoImage}
-            />
+            <MintCountdown />
           </div>
         </div>
       </div>
@@ -67,16 +61,7 @@ export default function Banner({ size }) {
         <h1 className="sr-only">Saiba Gang</h1>
         <Container>
           <div className={styles["banner-content"]}>
-            <div className={styles["banner-title"]}>
-              <Image
-                priority={true}
-                alt="Saiba Gang Logo"
-                layout="responsive"
-                width={800}
-                height={342}
-                src={LogoImage}
-              />
-            </div>
+            <MintCountdown />
           </div>
         </Container>
       </div>
