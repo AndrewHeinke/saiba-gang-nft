@@ -40,9 +40,8 @@ export default function Roadmap() {
           title="Mint Launch"
           description={
             <>
-              We will be minting 8,888 Saibas. The mint price will be determined
-              closer to launch based on what $SOL prices are at that time. The
-              Saiba Gang technical team includes{" "}
+              We will be minting 8,888 Saibas. The mint price will be 0.88 sol.
+              The Saiba Gang technical team includes{" "}
               <a
                 rel="noreferrer"
                 target="_blank"

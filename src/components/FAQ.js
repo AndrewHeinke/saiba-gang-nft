@@ -15,10 +15,7 @@ export default function FAQ() {
         <p>Our official mint date is November 1st 2021 at 2:00PM EST.</p>
       </Collapse>
       <Collapse title="How much is the mint?">
-        <p>
-          Mint price will be announced closer to launch date, depending on sol
-          price and community opinion. Expect a 1-2 sol mint price.
-        </p>
+        <p>Mint price will be 0.88 sol.</p>
       </Collapse>
       <Collapse title="Is there a whitelist?">
         <p>We have made the decision as a project to not have a whitelist.</p>
