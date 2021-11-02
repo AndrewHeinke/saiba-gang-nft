@@ -100,10 +100,10 @@ export default function Home() {
           <h2>Roadmap</h2>
           <Roadmap />
         </Section>
-        {/* <Section id="rarity">
+        <Section id="rarity">
           <h2>Rarity</h2>
           <RarityCarousel />
-        </Section> */}
+        </Section>
         <Section id="team">
           <h2>The Team</h2>
           <div className="grid">

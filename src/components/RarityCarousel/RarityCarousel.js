@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { imageBasePath, traitsTable } from "../../../data/data.js";
+import { traitsTable } from "../../../data/data.js";
 import { getName, getRarityName, getRarityPercent } from "./rarityUtils";
+import classNames from "classnames";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { EffectCoverflow, Navigation } from "swiper";
 import "swiper/css";
@@ -13,7 +14,7 @@ export default function RarityCarousel() {
   const [imageArray, setImageArray] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [config, setConfig] = useState({
-    filter: "FRUIT",
+    filter: "ACCESSORIES",
     rarities: "ALL",
   });
   const [swiper, setSwiper] = useState(null);
@@ -28,8 +29,19 @@ export default function RarityCarousel() {
     }
   };
 
+  const handleAttribute = (e) => {
+    setConfig({
+      ...config,
+      filter: e.target.value,
+    });
+    if (swiper) {
+      swiper.slideTo(0);
+    }
+  };
+
   useEffect(() => {
     const trait = traitsTable[config.filter.toLowerCase()];
+
     const selectedRarity = config.rarities.replace(" ", "").toLowerCase();
     setImageArray(
       selectedRarity === "all"
@@ -41,11 +53,46 @@ export default function RarityCarousel() {
   if (imageArray?.length === 0 || imageArray === undefined) {
     return (
       <div>
-        <h2>No Images to show..</h2>
+        <div className="select-wrapper">
+          <label htmlFor="raritySelect">Rarity</label>
+          <select name="raritySelect" id="raritySelect" onChange={handleRarity}>
+            <option value="ALL">All</option>
+            <option value="COMMON">Common</option>
+            <option value="UNCOMMON">Uncommon</option>
+            <option value="RARE">Rare</option>
+            <option value="SUPERRARE">Superrare</option>
+            <option value="MYTHIC">Mythic</option>
+          </select>
+        </div>
+        <div className="select-wrapper">
+          <label htmlFor="attributeSelect">Attribute</label>
+          <select
+            name="attributeSelect"
+            id="attributeSelect"
+            onChange={handleAttribute}
+          >
+            <option value="ACCESSORIES">Accessories</option>
+            <option value="DIVISION">Division</option>
+            <option value="EXTRA">Extra</option>
+          </select>
+        </div>
+        <p>No Images to show.</p>
         <p>please choose another filter </p>
       </div>
     );
   }
+
+  const classes = classNames("label-wrapper", {
+    [`${getRarityName(
+      traitsTable[config.filter.toLowerCase()],
+      imageArray[activeIndex]
+    )} `]: config.rarities === "ALL",
+    common: config.rarities === "COMMON",
+    uncommon: config.rarities === "UNCOMMON",
+    rare: config.rarities === "RARE",
+    superrare: config.rarities === "SUPERRARE",
+    mythic: config.rarities === "MYTHIC",
+  });
 
   return (
     <div className="rarities-wrapper">
@@ -58,6 +105,18 @@ export default function RarityCarousel() {
           <option value="RARE">Rare</option>
           <option value="SUPERRARE">Superrare</option>
           <option value="MYTHIC">Mythic</option>
+        </select>
+      </div>
+      <div className="select-wrapper">
+        <label htmlFor="attributeSelect">Attribute</label>
+        <select
+          name="attributeSelect"
+          id="attributeSelect"
+          onChange={handleAttribute}
+        >
+          <option value="ACCESSORIES">Accessories</option>
+          <option value="DIVISION">Division</option>
+          <option value="EXTRA">Extra</option>
         </select>
       </div>
 
@@ -88,12 +147,12 @@ export default function RarityCarousel() {
         {imageArray.map((value, index) => {
           return (
             <SwiperSlide key={index}>
-              <img src={`${imageBasePath}${value}`} alt="" />
+              <img src={`./images/${config.filter}/${value}`} alt="" />
             </SwiperSlide>
           );
         })}
       </Swiper>
-      <div>
+      <div className={classes}>
         {activeIndex < imageArray.length && (
           <div>
             <p>{getName(imageArray[activeIndex])}</p>

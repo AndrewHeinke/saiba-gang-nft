@@ -230,8 +230,46 @@ p {
   .swiper-slide {
     opacity: 0;
     transition: opacity 0.5s;
+    position: relative;
     width: 300px !important;
-    height: 300px !important;
+    height: 275px !important;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.0980392) 25%,
+        transparent 25%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.0980392) 75%,
+        rgba(0, 0, 0, 0.0980392) 0
+      ),
+      linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.0980392) 25%,
+        transparent 25%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.0980392) 75%,
+        rgba(0, 0, 0, 0.0980392) 0
+      ),
+      white;
+    background-repeat: repeat, repeat;
+    background-position: 0px 0, 5px 5px;
+    background-origin: padding-box, padding-box;
+    background-clip: border-box, border-box;
+    background-size: 10px 10px, 10px 10px;
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+    transform: scaleX(1) scaleY(1) scaleZ(1);
+    &::after {
+      content: "";
+      width: 300px;
+      height: 275px;
+      background-image: url("../public/images/skin/default.png");
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+    }
   }
 
   .swiper-slide-next {
@@ -291,4 +329,77 @@ p {
 .countdown-colon {
   font-size: 24px;
   font-weight: bold;
+}
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  border-color: #6b7280;
+  border-width: 2px;
+  border-radius: 0.25rem;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.select-wrapper {
+  display: flex;
+  gap: 1rem;
+  select {
+    text-transform: uppercase;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23fbe7a3' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    color: var(--yellow);
+    background-color: transparent;
+    padding-right: 2.5rem;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    font-family: "BergenMono-Regular", sans-serif;
+    font-weight: bold;
+    border-color: var(--yellow);
+    &:focus {
+      outline: 2px solid var(--pink);
+    }
+  }
+}
+
+.label-wrapper {
+  padding: 1rem;
+}
+
+.common {
+  background-color: #cdb19b;
+}
+.uncommon {
+  background-color: #77bdeb;
+}
+
+.rare {
+  background-color: #ebc55f;
+}
+.mythic {
+  background-color: #53e3bd;
+}
+.superrare {
+  background-color: #f17a92;
 }

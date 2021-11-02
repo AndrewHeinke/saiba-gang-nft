@@ -65,7 +65,7 @@ export default function Header({ size }) {
                   Roadmap
                 </ScrollLink>
               </li>
-              {/* <li className={styles["header-link"]}>
+              <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
                   to="rarity"
@@ -76,7 +76,7 @@ export default function Header({ size }) {
                 >
                   Rarity
                 </ScrollLink>
-              </li> */}
+              </li>
               <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
@@ -138,7 +138,7 @@ export default function Header({ size }) {
                 Roadmap
               </ScrollLink>
             </li>
-            {/* <li className={styles["header-link"]}>
+            <li className={styles["header-link"]}>
               <ScrollLink
                 activeClass={styles["header-link--active"]}
                 to="rarity"
@@ -149,7 +149,7 @@ export default function Header({ size }) {
               >
                 Rarity
               </ScrollLink>
-            </li> */}
+            </li>
             <li className={styles["header-link"]}>
               <ScrollLink
                 activeClass={styles["header-link--active"]}

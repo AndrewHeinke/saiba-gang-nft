@@ -1,30 +1,53 @@
-export const imageBasePath =
-  "http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/";
-
 export const traitsTable = {
-  fruit: {
+  accessories: {
+    common: ["blue_neon_bars.png", "green_neon_bars.png", "kunai.png"],
+    uncommon: ["none.png"],
+    rare: ["red_neon_bars.png"],
+    superrare: ["studs.png"],
+    mythic: ["ball_earings.png"],
+  },
+  division: {
+    common: ["dregs.png", "industrial.png", "portside.png", "quarter.png"],
+  },
+  extra: {
     common: [
-      "coconut.png",
-      "kiwi-fruit.png",
-      "red-apple.png",
-      "green-apple.png",
+      "none.png",
+      "angel_wings.png",
+      "black_katana.png",
+      "charge_swords.png",
     ],
-    uncommon: ["pineapple.png"],
-    rare: ["mango.png"],
-    superrare: ["tangerine.png"],
-    mythic: ["pear.png"],
+    uncommon: ["coil_swords.png"],
+    rare: ["double_black_katana.png"],
+    superrare: ["double_neon_katanas.png", "emerald_blade.png"],
+    mythic: ["neon_katana.png"],
   },
 };
 
 export const rarityTable = {
-  fruit: {
-    coconut: "30%",
-    "kiwi-fruit": "30%",
-    "red-apple": "35%",
-    "green-apple": "35%",
-    pineapple: "20%",
-    mango: "10%",
-    tangerine: "7%",
-    pear: "3%",
+  accessories: {
+    blue_neon_bars: "30%",
+    green_neon_bars: "30%",
+    kunai: "35%",
+    none: "35%",
+    red_neon_bars: "20%",
+    studs: "13%",
+    ball_earings: "7%",
+  },
+  division: {
+    dregs: "25%",
+    industrial: "25%",
+    portside: "25%",
+    quarter: "25%",
+  },
+  extra: {
+    none: "30%",
+    angel_wings: "30%",
+    black_katana: "35%",
+    charge_swords: "35%",
+    coil_swords: "20%",
+    double_black_katana: "13%",
+    double_neon_katanas: "7%",
+    emerald_blade: "7%",
+    neon_katana: "7%",
   },
 };
