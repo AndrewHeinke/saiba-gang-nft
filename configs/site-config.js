@@ -19,7 +19,7 @@ const siteConfig = {
   seo: {
     title: "Saiba Gang NFT",
     description:
-      "The Saiba Gang are 8,888 unique generative NFTs with attributes and a rarity system. Join the Saiba Gang by owning a character NFT on the Solana Blockchain.",
+      "The Saiba Gang are 4,444 unique generative NFTs with attributes and a rarity system. Join the Saiba Gang by owning a character NFT on the Solana Blockchain.",
     siteUrl: "https://www.saibagang.com",
     twitter: {
       handle: "@SaibaGang",
@@ -32,7 +32,7 @@ const siteConfig = {
       url: "https://www.saibagang.com",
       title: "Saiba Gang NFT",
       description:
-        "The Saiba Gang are 8,888 unique generative NFTs with attributes and a rarity system. Join the Saiba Gang by owning a character NFT on the Solana Blockchain.",
+        "The Saiba Gang are 4,444 unique generative NFTs with attributes and a rarity system. Join the Saiba Gang by owning a character NFT on the Solana Blockchain.",
       site_name: "Saiba Gang",
       images: [
         {

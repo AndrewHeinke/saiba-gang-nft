@@ -1,6 +1,7 @@
 import { ParallaxBanner } from "react-scroll-parallax";
 import Container from "./Container";
 import styles from "styles/Banner.module.scss";
+import mintStyles from "styles/MintCountdown.module.scss";
 import Image from "next/image";
 import BannerImage from "../../public/images/cyber-bg.jpg";
 import LogoImage from "../../public/images/logo.png";
@@ -34,6 +35,25 @@ export default function Banner({ size }) {
         <div className={styles["mobile-banner-content"]}>
           <div className={styles["mobile-banner-title"]}>
             <h1 className="sr-only">Saiba Gang</h1>
+            <div className={mintStyles["mint-countdown"]}>
+              <p className={mintStyles["mint-countdown-title"]}>
+                Mint Countdown
+              </p>
+              <div className={mintStyles["mint-countdown-wrapper"]}>
+                <p className={mintStyles["mint-countdown-completed"]}>
+                  Minting is live!{" "}
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://saiba-gang.mint-nfts.page/"
+                    className={mintStyles["mint-countdown-button"]}
+                  >
+                    Saiba Gang Mint →
+                  </a>
+                </p>
+              </div>
+            </div>
+
             <MintCountdown />
           </div>
         </div>

@@ -1,6 +1,5 @@
 import styles from "styles/MintCountdown.module.scss";
 import Countdown from "react-countdown";
-import Container from "components/Container";
 
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
   if (completed) {
