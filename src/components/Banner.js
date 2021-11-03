@@ -53,8 +53,6 @@ export default function Banner({ size }) {
                 </p>
               </div>
             </div>
-
-            <MintCountdown />
           </div>
         </div>
       </div>
