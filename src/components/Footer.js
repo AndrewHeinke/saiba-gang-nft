@@ -1,5 +1,5 @@
 import styles from "styles/Footer.module.scss";
-import { Twitter, Discord } from "./Icons";
+import { Twitter, Discord, Medium } from "./Icons";
 
 export default function Footer() {
   return (
@@ -8,6 +8,13 @@ export default function Footer() {
         All rights reserved. Est {new Date().getFullYear()}.
       </p>
       <div className={styles["footer-flex"]}>
+        <a
+          href="https://medium.com/@saibagang"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Medium className={styles["footer-social-link"]} />
+        </a>
         <a
           href="https://twitter.com/SaibaGang"
           target="_blank"

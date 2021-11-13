@@ -61,12 +61,12 @@ export default function Roadmap() {
               Our official mint date is November 1st 2021 at 2:00PM EST.
             </>
           }
-          status="active"
+          status="complete"
         />
         <RoadmapStep
           title="Establish a Community Fund"
           description="Immediately after the project launches, we will be contributing 20% of royalties from NFT sales into a community wallet. More on community fund management below."
-          status="incomplete"
+          status="complete"
         />
       </div>
 
@@ -75,7 +75,7 @@ export default function Roadmap() {
         <RoadmapStep
           title="First Airdrop"
           description="The first Lore Prompt will be establishing the hideouts of each division. Once the description of the hideouts have been chosen, the Saiba Gang team will commission an artist(s) to create a graphic of these hideouts. The four hideouts will be airdropped to Saiba Gang holders with the respective divisions. The aim is to perform this airdrop within the first week of the launch."
-          status="incomplete"
+          status="active"
         />
         <RoadmapStep
           title="Continuous Airdrops"

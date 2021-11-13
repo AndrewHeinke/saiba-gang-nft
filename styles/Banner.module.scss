@@ -2,13 +2,18 @@
 
 .banner {
   &-content {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
     background: var(--primary-dark);
     box-shadow: 0 0 7px #eebfec, 0 0 10px #d86ed5, 0 0 21px #d86ed5,
       0 0 42px #a851b2, 0 0 82px #a851b2, 0 0 92px #a851b2, 0 0 151px #a851b2;
     display: inline-block;
     outline: 1px solid #eebfec;
+
+    p {
+      margin-top: 0;
+    }
   }
+
   &-container {
     width: 100%;
     height: 100%;
@@ -22,6 +27,7 @@
     justify-content: center;
     z-index: 10;
   }
+
   &-title {
     display: block;
     width: 400px;
@@ -45,6 +51,7 @@
 .mobile-banner {
   padding-top: 97px;
   position: relative;
+  text-align: center;
 
   &-title {
     display: block;
@@ -59,5 +66,9 @@
     background: var(--primary-dark);
     display: flex;
     border: 2px solid var(--pink);
+
+    p {
+      margin-top: 0 !important;
+    }
   }
 }

@@ -4,8 +4,6 @@ import styles from "styles/Banner.module.scss";
 import mintStyles from "styles/MintCountdown.module.scss";
 import Image from "next/image";
 import BannerImage from "../../public/images/cyber-bg.jpg";
-import LogoImage from "../../public/images/logo.png";
-import MintCountdown from "./MintCountdown";
 
 const HomeBannerImg = () => (
   <div className={styles["banner-image-wrapper"]}>
@@ -33,23 +31,28 @@ export default function Banner({ size }) {
           priority
         />
         <div className={styles["mobile-banner-content"]}>
-          <div className={styles["mobile-banner-title"]}>
-            <h1 className="sr-only">Saiba Gang</h1>
-            <div className={mintStyles["mint-countdown"]}>
-              <p className={mintStyles["mint-countdown-title"]}>
-                Mint Countdown
-              </p>
-              <div className={mintStyles["mint-countdown-wrapper"]}>
-                <p className={mintStyles["mint-countdown-completed"]}>
-                  Minting is live!{" "}
-                  <a
-                    rel="noreferrer"
-                    target="_blank"
-                    href="https://saiba-gang.mint-nfts.page/"
-                    className={mintStyles["mint-countdown-button"]}
-                  >
-                    Saiba Gang Mint →
-                  </a>
+          <div className="bg-confetti-animated">
+            <div className={styles["mobile-banner-title"]}>
+              <h1 className="sr-only">Saiba Gang</h1>
+              <div className={mintStyles["mint-countdown"]}>
+                <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
+                {/* <p>Purchase on marketplace:</p>
+              <div className="secondary-wrapper">
+                <a
+                  className="secondary-link"
+                  href="https://solanart.io/collections/saibagang"
+                >
+                  <img
+                    src="images/solanart-logo.png"
+                    alt="Saiba Gang on Solanart"
+                  />
+                  Solanart
+                </a>
+              </div> */}
+                <p>
+                  Secondary marketplace
+                  <br />
+                  listing coming soon!
                 </p>
               </div>
             </div>
@@ -79,7 +82,26 @@ export default function Banner({ size }) {
         <h1 className="sr-only">Saiba Gang</h1>
         <Container>
           <div className={styles["banner-content"]}>
-            <MintCountdown />
+            <div className="bg-confetti-animated">
+              <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
+              {/* <p>Purchase on marketplace:</p> */}
+              {/* <div className="secondary-wrapper">
+                <a
+                  className="secondary-link"
+                  href="https://solanart.io/collections/saibagang"
+                >
+                  <img
+                    src="images/solanart-logo.png"
+                    alt="Saiba Gang on Solanart"
+                  />
+                  Solanart
+                </a>
+              </div> */}
+              <p style={{ textAlign: "center" }}>
+                Secondary marketplace
+                <br /> listing coming soon!
+              </p>
+            </div>
           </div>
         </Container>
       </div>

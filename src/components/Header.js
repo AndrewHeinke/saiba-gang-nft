@@ -1,5 +1,5 @@
 import styles from "styles/Header.module.scss";
-import { Twitter, Discord } from "./Icons";
+import { Twitter, Discord, Medium } from "./Icons";
 import Image from "next/image";
 import LogoImg from "../../public/images/logo.png";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
@@ -24,6 +24,13 @@ export default function Header({ size }) {
         <div className={styles["mobile-header-container"]}>
           <div className={styles["mobile-header-top"]}>
             <Logo onClick={() => scroll.scrollToTop()} />
+            <a
+              href="https://medium.com/@saibagang"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Medium className={styles["header-link-social"]} />
+            </a>
             <a
               href="https://twitter.com/SaibaGang"
               target="_blank"
@@ -177,6 +184,13 @@ export default function Header({ size }) {
           </ul>
         </nav>
         <div className={styles["header-social-section"]}>
+          <a
+            href="https://medium.com/@saibagang"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Medium className={styles["header-link-social"]} />
+          </a>
           <a
             href="https://twitter.com/SaibaGang"
             target="_blank"
