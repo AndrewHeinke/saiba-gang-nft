@@ -300,23 +300,32 @@ p {
   justify-content: center;
   text-decoration: none;
   font-weight: bold;
-  background: #841bf1;
+  background: var(--pink);
   color: white;
   border-radius: 0.25rem;
-  padding: 0.75rem 0.75rem;
+  padding: 0.75rem 1rem;
   transition: 0.3s ease;
-
+  flex-shrink: 0;
   &:hover {
-    background: #7018cd;
+    background: var(--dark-pink);
   }
 
   img {
-    width: 1.5em;
+    width: 2em;
     margin-right: 0.5rem;
   }
 
   svg {
     height: 2rem;
+  }
+}
+
+.secondary-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  @include respond-below(md) {
+    flex-direction: column;
   }
 }
 

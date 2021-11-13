@@ -37,8 +37,18 @@ export default function Banner({ size }) {
               <h1 className="sr-only">Saiba Gang</h1>
               <div className={mintStyles["mint-countdown"]}>
                 <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
-                <p>Purchase on marketplace:</p>
+                <p style={{ textAlign: "center" }}>Purchase on marketplace:</p>
                 <div className="secondary-wrapper">
+                  <a
+                    className="secondary-link"
+                    href="https://solanart.io/collections/saibagang"
+                  >
+                    <img
+                      src="images/solanart-logo.png"
+                      alt="Saiba Gang on Solanart"
+                    />
+                    Solanart
+                  </a>
                   <a
                     className="secondary-link"
                     href="https://magiceden.io/marketplace/saiba_gang"
@@ -79,8 +89,18 @@ export default function Banner({ size }) {
           <div className={styles["banner-content"]}>
             <div className="bg-confetti-animated">
               <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
-              <p>Purchase on marketplace:</p>
+              <p style={{ textAlign: "center" }}>Purchase on marketplace:</p>
               <div className="secondary-wrapper">
+                <a
+                  className="secondary-link"
+                  href="https://solanart.io/collections/saibagang"
+                >
+                  <img
+                    src="images/solanart-logo.png"
+                    alt="Saiba Gang on Solanart"
+                  />
+                  Solanart
+                </a>
                 <a
                   className="secondary-link"
                   href="https://magiceden.io/marketplace/saiba_gang"
