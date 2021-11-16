@@ -23,7 +23,6 @@ const Logo = ({ ...restOfProps }) => (
 
 export default function Post({ post }) {
   const router = useRouter();
-
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
@@ -72,12 +71,14 @@ export default function Post({ post }) {
           Back to main lore page
         </Link>
         <div className="post-img-wrapper">
-          <Image
-            src={post.heroImage.url}
-            alt=""
-            layout="fill"
-            objectFit="contain"
-          />
+          {post?.heroImage?.url && (
+            <Image
+              src={post.heroImage.url}
+              alt=""
+              layout="fill"
+              objectFit="contain"
+            />
+          )}
         </div>
 
         <h1>{post.title}</h1>
