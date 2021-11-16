@@ -7,6 +7,9 @@ import { Twitter, Discord, Medium } from "../../src/components/Icons";
 import Image from "next/image";
 import LogoImg from "../../public/images/logo.png";
 import { getPost, getAllPostsWithSlug } from "lib/graphcms";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import { MarkdownComponents } from "components/MarkdownComponents";
 
 const Logo = ({ ...restOfProps }) => (
   <div tabIndex={0} className={styles["header-logo"]} {...restOfProps}>
@@ -21,15 +24,11 @@ const Logo = ({ ...restOfProps }) => (
   </div>
 );
 
-export default function Post({ post }) {
+export default function Post({ post, content }) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-
-  const content = () => {
-    return { __html: post.content.html };
-  };
 
   return (
     <div>
@@ -81,21 +80,21 @@ export default function Post({ post }) {
           )}
         </div>
 
-        <h1>{post.title}</h1>
+        <h1>{post?.title}</h1>
         <div className="author-wrapper">
           <Image
-            src={post.authors[0].photo.url}
+            src={post?.authors[0].photo.url}
             alt=""
             width={44}
             height={44}
             layout="fixed"
           />
           <div>
-            <p>Written By: {post.authors[0].name}</p>
-            <p>{post.publishedAt}</p>
+            <p>Written By: {post?.authors[0].name}</p>
+            <p>{post?.publishedAt}</p>
           </div>
         </div>
-        <div className="post-content" dangerouslySetInnerHTML={content()} />
+        {content && <MDXRemote {...content} components={MarkdownComponents} />}
       </Container>
     </div>
   );
@@ -103,9 +102,11 @@ export default function Post({ post }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPost(params.slug);
+  const mdxSource = await serialize(data.blogPost.content.markdown);
   return {
     props: {
       post: data.blogPost,
+      content: mdxSource,
     },
   };
 }
