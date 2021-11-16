@@ -2,27 +2,13 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "components/Container";
 import Link from "next/link";
-import styles from "styles/Header.module.scss";
-import { Twitter, Discord, Medium } from "../../src/components/Icons";
 import Image from "next/image";
-import LogoImg from "../../public/images/logo.png";
 import { getPost, getAllPostsWithSlug } from "lib/graphcms";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import { MarkdownComponents } from "components/MarkdownComponents";
-
-const Logo = ({ ...restOfProps }) => (
-  <div tabIndex={0} className={styles["header-logo"]} {...restOfProps}>
-    <Image
-      src={LogoImg}
-      priority={true}
-      alt="Saiba Gang Logo"
-      layout="responsive"
-      width={800}
-      height={342}
-    />
-  </div>
-);
+import Head from "next/head";
+import LoreHeader from "components/LoreHeader";
 
 export default function Post({ post, content }) {
   const router = useRouter();
@@ -32,39 +18,11 @@ export default function Post({ post, content }) {
 
   return (
     <div>
-      <header className={styles["header"]}>
-        <div className={styles["header-container"]}>
-          <Link href="/" passHref>
-            <a>
-              <Logo />
-            </a>
-          </Link>
-
-          <div className={styles["header-social-section"]}>
-            <a
-              href="https://medium.com/@saibagang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Medium className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://twitter.com/SaibaGang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://discord.gg/aRPTxj5FMA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Discord className={styles["header-link-social"]} />
-            </a>
-          </div>
-        </div>
-      </header>
+      <Head>
+        <title>Saiba Gang</title>
+        <meta name="robots" content="noindex"></meta>
+      </Head>
+      <LoreHeader />
       <Container className="lore">
         <Link href="/lore" passHref>
           Back to main lore page
@@ -89,10 +47,10 @@ export default function Post({ post, content }) {
             height={44}
             layout="fixed"
           />
-          <div>
-            <p>Written By: {post?.authors[0].name}</p>
-            <p>{post?.publishedAt}</p>
-          </div>
+          <Link href={`/lore/authors/${post?.authors[0].slug}`} passHref>
+            <a>Written By: {post?.authors[0].name}</a>
+          </Link>
+          <p>{post?.publishedAt}</p>
         </div>
         {content && <MDXRemote {...content} components={MarkdownComponents} />}
       </Container>
