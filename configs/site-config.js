@@ -1,7 +1,4 @@
-import { getAbsoluteURL } from "utils/getAbsoluteURL";
-
 const baseUrl = "https://github.com/AndrewHeinke/saiba-gang-nft";
-const origin = getAbsoluteURL();
 
 const siteConfig = {
   author: {
