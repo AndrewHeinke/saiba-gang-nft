@@ -79,6 +79,6 @@ export async function getStaticPaths() {
     paths: authors.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: false,
+    fallback: "blocking",
   };
 }
