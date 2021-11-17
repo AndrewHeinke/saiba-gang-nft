@@ -66,7 +66,7 @@ export async function getStaticProps({ params }) {
       post: data.blogPost,
       content: mdxSource,
     },
-    revalidate: 10,
+    revalidate: 5,
   };
 }
 

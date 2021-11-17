@@ -65,7 +65,7 @@ export async function getStaticProps({ params }) {
       author: data.author,
       bio: mdxSource,
     },
-    revalidate: 10,
+    revalidate: 5,
   };
 }
 
