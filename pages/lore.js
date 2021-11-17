@@ -9,6 +9,7 @@ export default function Lore({ posts }) {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data } = useSWR("/api", fetcher, {
     fallbackData: posts,
+    refreshInterval: 5000,
   });
 
   return (
