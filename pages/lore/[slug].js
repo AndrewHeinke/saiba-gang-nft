@@ -74,7 +74,7 @@ export async function getStaticProps({ params }) {
         post: data.blogPost,
         content: mdxSource,
       },
-      revalidate: 1,
+      revalidate: 60,
     };
   }
 }
@@ -85,6 +85,6 @@ export async function getStaticPaths() {
     paths: posts.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: "blocking",
+    fallback: false,
   };
 }

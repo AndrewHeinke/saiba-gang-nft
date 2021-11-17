@@ -2,11 +2,11 @@ import Container from "components/Container";
 import Link from "next/link";
 import Image from "next/image";
 import { getAuthor, getAllAuthorsWithSlug } from "lib/graphcms";
-import { serialize } from "next-mdx-remote/serialize";
-import { MDXRemote } from "next-mdx-remote";
 import { MarkdownComponents } from "components/MarkdownComponents";
 import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 
 export default function Author({ author, bio }) {
   return (
@@ -27,7 +27,7 @@ export default function Author({ author, bio }) {
           />
           <div>
             <h1>{author?.name}</h1>
-            {bio && <MDXRemote {...bio} components={MarkdownComponents} />}
+            {<MDXRemote {...bio} components={MarkdownComponents} />}
           </div>
         </div>
 
@@ -68,7 +68,7 @@ export async function getStaticProps({ params }) {
         author: data.author,
         bio: mdxSource,
       },
-      revalidate: 1,
+      revalidate: 60,
     };
   }
 }
@@ -79,6 +79,6 @@ export async function getStaticPaths() {
     paths: authors.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: "blocking",
+    fallback: false,
   };
 }
