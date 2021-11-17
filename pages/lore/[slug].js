@@ -11,11 +11,6 @@ import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
 
 export default function Post({ post, content }) {
-  const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />;
-  }
-
   return (
     <div>
       <Head>
@@ -40,13 +35,16 @@ export default function Post({ post, content }) {
 
         <h1>{post?.title}</h1>
         <div className="author-wrapper">
-          <Image
-            src={post?.authors[0].photo.url}
-            alt=""
-            width={44}
-            height={44}
-            layout="fixed"
-          />
+          {post?.authors[0].photo.url && (
+            <Image
+              src={post?.authors[0].photo.url}
+              alt=""
+              width={44}
+              height={44}
+              layout="fixed"
+            />
+          )}
+
           <Link href={`/lore/authors/${post?.authors[0].slug}`} passHref>
             <a>Written By: {post?.authors[0].name}</a>
           </Link>
@@ -60,14 +58,23 @@ export default function Post({ post, content }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPost(params.slug);
-  const mdxSource = await serialize(data.blogPost.content.markdown);
-  return {
-    props: {
-      post: data.blogPost,
-      content: mdxSource,
-    },
-    revalidate: 5,
-  };
+  if (!data.blogPost) {
+    return {
+      notFound: true,
+      props: {
+        post: null,
+        content: null,
+      },
+    };
+  } else {
+    const mdxSource = await serialize(data.blogPost.content.markdown);
+    return {
+      props: {
+        post: data.blogPost,
+        content: mdxSource,
+      },
+    };
+  }
 }
 
 export async function getStaticPaths() {
@@ -76,6 +83,6 @@ export async function getStaticPaths() {
     paths: posts.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: true,
+    fallback: "blocking",
   };
 }
