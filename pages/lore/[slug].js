@@ -8,12 +8,16 @@ import { MarkdownComponents } from "components/MarkdownComponents";
 import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
 import useSWR from "swr";
+import moment from "moment";
 
 export default function Post({ post, content }) {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data } = useSWR("/api/get-post", (url) => fetcher(url, post.slug), {
+
+  const { data } = useSWR(["/api/get-post", post.slug], fetcher, {
     fallbackData: post,
   });
+
+  const formattedTime = moment(data?.publishedAt).format("MMMM DD, YYYY");
 
   return (
     <div>
@@ -39,9 +43,9 @@ export default function Post({ post, content }) {
 
         <h1>{data?.title}</h1>
         <div className="author-wrapper">
-          {data?.authors[0].photo.url && (
+          {data?.authors[0]?.photo?.url && (
             <Image
-              src={data?.authors[0].photo.url}
+              src={data.authors[0].photo.url}
               alt=""
               width={44}
               height={44}
@@ -49,10 +53,10 @@ export default function Post({ post, content }) {
             />
           )}
 
-          <Link href={`/lore/authors/${data?.authors[0].slug}`} passHref>
-            <a>Written By: {data?.authors[0].name}</a>
+          <Link href={`/lore/authors/${data?.authors[0]?.slug}`} passHref>
+            <a>Written By: {data?.authors[0]?.name}</a>
           </Link>
-          <p>{data?.publishedAt}</p>
+          <p>{formattedTime}</p>
         </div>
         {content && <MDXRemote {...content} components={MarkdownComponents} />}
       </Container>
