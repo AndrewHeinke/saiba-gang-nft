@@ -19,7 +19,7 @@ export default function Post({ post, content }) {
   return (
     <div>
       <Head>
-        <title>Saiba Gang</title>
+        <title>{post?.title} | Saiba Gang</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
@@ -66,6 +66,7 @@ export async function getStaticProps({ params }) {
       post: data.blogPost,
       content: mdxSource,
     },
+    revalidate: 60,
   };
 }
 
