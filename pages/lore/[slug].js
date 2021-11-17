@@ -7,22 +7,15 @@ import { MDXRemote } from "next-mdx-remote";
 import { MarkdownComponents } from "components/MarkdownComponents";
 import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
-import useSWR from "swr";
 import moment from "moment";
 
 export default function Post({ post, content }) {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-  const { data } = useSWR(["/api/get-post", post.slug], fetcher, {
-    fallbackData: post,
-  });
-
-  const formattedTime = moment(data?.publishedAt).format("MMMM DD, YYYY");
+  const formattedTime = moment(post?.publishedAt).format("MMMM DD, YYYY");
 
   return (
     <div>
       <Head>
-        <title>{data?.title} | Saiba Gang</title>
+        <title>{post?.title} | Saiba Gang</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
@@ -31,9 +24,9 @@ export default function Post({ post, content }) {
           Back to main lore page
         </Link>
         <div className="post-img-wrapper">
-          {data?.heroImage?.url && (
+          {post?.heroImage?.url && (
             <Image
-              src={data.heroImage.url}
+              src={post.heroImage.url}
               alt=""
               layout="fill"
               objectFit="contain"
@@ -41,11 +34,11 @@ export default function Post({ post, content }) {
           )}
         </div>
 
-        <h1>{data?.title}</h1>
+        <h1>{post?.title}</h1>
         <div className="author-wrapper">
-          {data?.authors[0]?.photo?.url && (
+          {post?.authors[0]?.photo?.url && (
             <Image
-              src={data.authors[0].photo.url}
+              src={post.authors[0].photo.url}
               alt=""
               width={44}
               height={44}
@@ -53,8 +46,8 @@ export default function Post({ post, content }) {
             />
           )}
 
-          <Link href={`/lore/authors/${data?.authors[0]?.slug}`} passHref>
-            <a>Written By: {data?.authors[0]?.name}</a>
+          <Link href={`/lore/authors/${post?.authors[0]?.slug}`} passHref>
+            <a>Written By: {post?.authors[0]?.name}</a>
           </Link>
           <p>{formattedTime}</p>
         </div>
@@ -81,7 +74,7 @@ export async function getStaticProps({ params }) {
         post: data.blogPost,
         content: mdxSource,
       },
-      revalidate: 5,
+      revalidate: 1,
     };
   }
 }

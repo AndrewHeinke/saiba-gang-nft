@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
 import Container from "components/Container";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,11 +9,6 @@ import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
 
 export default function Author({ author, bio }) {
-  const router = useRouter();
-  if (!router.isFallback && !author) {
-    return <ErrorPage statusCode={404} />;
-  }
-
   return (
     <div>
       <Head>
@@ -59,14 +52,25 @@ export default function Author({ author, bio }) {
 
 export async function getStaticProps({ params }) {
   const data = await getAuthor(params.slug);
-  const mdxSource = await serialize(data.author.bio.markdown);
-  return {
-    props: {
-      author: data.author,
-      bio: mdxSource,
-    },
-    revalidate: 5,
-  };
+
+  if (!data.author) {
+    return {
+      notFound: true,
+      props: {
+        author: null,
+        bio: null,
+      },
+    };
+  } else {
+    const mdxSource = await serialize(data.author.bio.markdown);
+    return {
+      props: {
+        author: data.author,
+        bio: mdxSource,
+      },
+      revalidate: 1,
+    };
+  }
 }
 
 export async function getStaticPaths() {
@@ -75,6 +79,6 @@ export async function getStaticPaths() {
     paths: authors.map(({ slug }) => ({
       params: { slug },
     })),
-    fallback: true,
+    fallback: "blocking",
   };
 }
