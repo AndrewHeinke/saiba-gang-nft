@@ -1,5 +1,3 @@
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
 import Container from "components/Container";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,12 +7,18 @@ import { MDXRemote } from "next-mdx-remote";
 import { MarkdownComponents } from "components/MarkdownComponents";
 import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
+import useSWR from "swr";
 
 export default function Post({ post, content }) {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data } = useSWR("/api/get-post", (url) => fetcher(url, post.slug), {
+    fallbackData: post,
+  });
+
   return (
     <div>
       <Head>
-        <title>{post?.title} | Saiba Gang</title>
+        <title>{data?.title} | Saiba Gang</title>
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
@@ -23,9 +27,9 @@ export default function Post({ post, content }) {
           Back to main lore page
         </Link>
         <div className="post-img-wrapper">
-          {post?.heroImage?.url && (
+          {data?.heroImage?.url && (
             <Image
-              src={post.heroImage.url}
+              src={data.heroImage.url}
               alt=""
               layout="fill"
               objectFit="contain"
@@ -33,11 +37,11 @@ export default function Post({ post, content }) {
           )}
         </div>
 
-        <h1>{post?.title}</h1>
+        <h1>{data?.title}</h1>
         <div className="author-wrapper">
-          {post?.authors[0].photo.url && (
+          {data?.authors[0].photo.url && (
             <Image
-              src={post?.authors[0].photo.url}
+              src={data?.authors[0].photo.url}
               alt=""
               width={44}
               height={44}
@@ -45,10 +49,10 @@ export default function Post({ post, content }) {
             />
           )}
 
-          <Link href={`/lore/authors/${post?.authors[0].slug}`} passHref>
-            <a>Written By: {post?.authors[0].name}</a>
+          <Link href={`/lore/authors/${data?.authors[0].slug}`} passHref>
+            <a>Written By: {data?.authors[0].name}</a>
           </Link>
-          <p>{post?.publishedAt}</p>
+          <p>{data?.publishedAt}</p>
         </div>
         {content && <MDXRemote {...content} components={MarkdownComponents} />}
       </Container>
@@ -73,6 +77,7 @@ export async function getStaticProps({ params }) {
         post: data.blogPost,
         content: mdxSource,
       },
+      revalidate: 5,
     };
   }
 }
