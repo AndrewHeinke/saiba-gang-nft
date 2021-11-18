@@ -16,7 +16,7 @@ export default function Author({ author, bio }) {
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
-      <Container>
+      <Container className="author-bio-container">
         <div className="author-bio-wrapper">
           <Image
             src={author?.photo.url}

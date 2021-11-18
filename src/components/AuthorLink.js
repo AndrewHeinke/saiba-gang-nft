@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "styles/AuthorLink.module.scss";
+import styles from "styles/AuthorLinks.module.scss";
 
 const AuthorLink = ({
   slug,
