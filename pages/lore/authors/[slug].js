@@ -20,13 +20,14 @@ export default function Author({ author, bio }) {
         <div className="author-bio-wrapper">
           <Image
             src={author?.photo.url}
+            className="author-bio-img"
             alt=""
             width={300}
             height={300}
             layout="fixed"
           />
-          <div>
-            <h1>{author?.name}</h1>
+          <div className="post-content">
+            <h1 className="author-name">{author?.name}</h1>
             {<MDXRemote {...bio} components={MarkdownComponents} />}
           </div>
         </div>

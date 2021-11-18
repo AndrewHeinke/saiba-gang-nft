@@ -12,7 +12,7 @@ export default function Lore({ posts }) {
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
-      <Container className="lore">
+      <Container className="lore-page">
         <h1>Most Recent Posts</h1>
         <ul>
           {posts.map((post) => (

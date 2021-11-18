@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { MarkdownComponents } from "components/MarkdownComponents";
 import Head from "next/head";
 import LoreHeader from "components/LoreHeader";
+import AuthorLink from "components/AuthorLink";
 import moment from "moment";
 
 export default function Post({ post, content }) {
@@ -29,33 +30,23 @@ export default function Post({ post, content }) {
             alt=""
             layout="fill"
             objectFit="cover"
+            objectPosition="center center"
+            priority
           />
         )}
       </div>
-      <Container className="lore">
+      <Container className="post-wrapper">
         <div className="author-wrapper">
-          <Link href={`/lore/authors/${post?.authors[0]?.slug}`} passHref>
-            <a className="author-link">
-              {post?.authors[0]?.photo?.url && (
-                <Image
-                  src={post.authors[0].photo.url}
-                  className="author-img"
-                  alt={`${post?.authors[0]?.name} - Saiba Gang Author`}
-                  width={40}
-                  height={40}
-                  layout="fixed"
-                />
-              )}
-              <div>
-                <span className="author-rank">Author</span>
-                <p>{post?.authors[0]?.name}</p>
-              </div>
-            </a>
-          </Link>
+          <AuthorLink
+            imgSrc={post.authors[0].photo.url}
+            name={post?.authors[0]?.name}
+            slug={post?.authors[0]?.slug}
+            role="author"
+          />
           <p className="published-date">{formattedTime}</p>
         </div>
         {content && (
-          <div className="lore-content">
+          <div className="post-content">
             <MDXRemote {...content} components={MarkdownComponents} />
           </div>
         )}

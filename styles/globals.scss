@@ -32,7 +32,16 @@ h3 {
 
 p {
   font-size: 1.25rem;
-  max-width: 720px;
+  line-height: 1.5;
+  font-weight: 400;
+  @include respond-below(sm) {
+    font-size: 1rem;
+  }
+}
+
+ul,
+ol {
+  font-size: 1.25rem;
   line-height: 1.5;
   font-weight: 400;
   @include respond-below(sm) {
@@ -397,6 +406,9 @@ p {
       margin: 0;
       line-height: 1;
       color: var(--yellow);
+      @include respond-below(sm) {
+        font-size: 0.85rem;
+      }
     }
 
     .author-rank {
@@ -423,7 +435,7 @@ p {
   }
 }
 
-.lore {
+.post-wrapper {
   max-width: 768px !important;
   a {
     color: var(--yellow);
@@ -440,10 +452,59 @@ p {
       margin-bottom: 0.5rem;
     }
   }
+  h1 {
+    font-family: "BergenMono-Regular", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--light-pink);
+  }
 }
 
-.lore-content {
-  h1,
+// text styles for post pages
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+.post-content {
+  font-size: 32px;
+  text-align: justify;
+
+  @include respond-below(md) {
+    font-size: 24px;
+  }
+
+  @include respond-below(sm) {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-family: "BergenMono-Regular", sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--light-pink);
+  }
   h2,
   h3,
   h4,
@@ -453,27 +514,19 @@ p {
     text-transform: uppercase;
     font-weight: bold;
     color: var(--light-pink);
-  }
-  a {
-    color: var(--yellow);
-  }
-  ul {
-    font-size: 1.25rem;
-    li {
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-    }
-  }
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+    margin-bottom: 0.25em;
     margin-top: 1.5em;
   }
   p {
-    font-size: 1.5rem;
-    line-height: 1.5;
+    margin: 1em 0;
+    font-size: 0.85em;
+  }
+  ul,
+  ol {
+    font-size: 0.85em;
+  }
+  a {
+    color: var(--yellow);
   }
 }
 
@@ -513,7 +566,8 @@ p {
 .author-bio-wrapper {
   margin-top: 3rem;
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .author-posts-list {
@@ -543,7 +597,6 @@ p {
   ol {
     width: 100%;
     padding: 0;
-    max-width: 720px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -577,4 +630,36 @@ p {
   padding: 0 5px;
   color: #ccc;
   content: "/";
+}
+
+.lore-page {
+  h1,
+  h2 {
+    font-family: "BergenMono-Regular", sans-serif;
+    color: white;
+    font-weight: bolder;
+  }
+  ul,
+  ol {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: 400;
+    @include respond-below(sm) {
+      font-size: 1rem;
+    }
+  }
+  a {
+    color: var(--yellow);
+  }
+}
+
+.author-bio-img {
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 1) !important;
+}
+
+.post-content {
+  .author-name {
+    text-transform: none;
+  }
 }
