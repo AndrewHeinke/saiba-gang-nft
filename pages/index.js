@@ -28,7 +28,7 @@ export default function Home() {
           <p>
             The nefarious technocrats that control Wintermoon City, the Kaze
             Collective, make life on the streets a brutal existence. Teens are
-            force to fight and steal to survive.
+            forced to fight and steal to survive.
           </p>
           <p>
             Alone they struggle to get by, but together... they just might make
