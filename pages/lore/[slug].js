@@ -10,7 +10,7 @@ import LoreHeader from "components/LoreHeader";
 import moment from "moment";
 
 export default function Post({ post, content }) {
-  const formattedTime = moment(post?.publishedAt).format("MMMM DD, YYYY");
+  const formattedTime = moment(post?.publishedAt).format("MMM DD, YYYY");
 
   return (
     <div>
@@ -19,39 +19,46 @@ export default function Post({ post, content }) {
         <meta name="robots" content="noindex"></meta>
       </Head>
       <LoreHeader />
+      <Container>
+        <h1 className="post-title">{post?.title}</h1>
+      </Container>
+      <div className="post-img-wrapper">
+        {post?.heroImage?.url && (
+          <Image
+            src={post.heroImage.url}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+          />
+        )}
+      </div>
       <Container className="lore">
-        <Link href="/lore" passHref>
-          Back to main lore page
-        </Link>
-        <div className="post-img-wrapper">
-          {post?.heroImage?.url && (
-            <Image
-              src={post.heroImage.url}
-              alt=""
-              layout="fill"
-              objectFit="contain"
-            />
-          )}
-        </div>
-
-        <h1>{post?.title}</h1>
         <div className="author-wrapper">
-          {post?.authors[0]?.photo?.url && (
-            <Image
-              src={post.authors[0].photo.url}
-              alt=""
-              width={44}
-              height={44}
-              layout="fixed"
-            />
-          )}
-
           <Link href={`/lore/authors/${post?.authors[0]?.slug}`} passHref>
-            <a>Written By: {post?.authors[0]?.name}</a>
+            <a className="author-link">
+              {post?.authors[0]?.photo?.url && (
+                <Image
+                  src={post.authors[0].photo.url}
+                  className="author-img"
+                  alt={`${post?.authors[0]?.name} - Saiba Gang Author`}
+                  width={40}
+                  height={40}
+                  layout="fixed"
+                />
+              )}
+              <div>
+                <span className="author-rank">Author</span>
+                <p>{post?.authors[0]?.name}</p>
+              </div>
+            </a>
           </Link>
-          <p>{formattedTime}</p>
+          <p className="published-date">{formattedTime}</p>
         </div>
-        {content && <MDXRemote {...content} components={MarkdownComponents} />}
+        {content && (
+          <div className="lore-content">
+            <MDXRemote {...content} components={MarkdownComponents} />
+          </div>
+        )}
       </Container>
     </div>
   );
