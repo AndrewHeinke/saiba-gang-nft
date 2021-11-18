@@ -1,0 +1,40 @@
+@import "mixins";
+
+.author-link {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  p {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1;
+    color: var(--yellow);
+    @include respond-below(sm) {
+      font-size: 0.85rem;
+    }
+  }
+
+  .author-rank {
+    text-transform: uppercase;
+    font-size: 10px;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1;
+  }
+
+  &:hover {
+    p {
+      text-decoration: underline;
+    }
+  }
+}
+.published-date {
+  font-size: 1rem;
+  line-height: 1;
+  @include respond-below(md) {
+    font-size: 0.85rem;
+  }
+}

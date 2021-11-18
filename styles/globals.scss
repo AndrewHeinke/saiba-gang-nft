@@ -395,44 +395,6 @@ ol {
     border: 1px solid white !important;
     transition: 0.3s ease;
   }
-  .author-link {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    text-decoration: none;
-    font-weight: bold;
-    p {
-      font-size: 1rem;
-      margin: 0;
-      line-height: 1;
-      color: var(--yellow);
-      @include respond-below(sm) {
-        font-size: 0.85rem;
-      }
-    }
-
-    .author-rank {
-      text-transform: uppercase;
-      font-size: 10px;
-      display: block;
-      margin-bottom: 0.25rem;
-      color: rgba(255, 255, 255, 0.75);
-      line-height: 1;
-    }
-
-    &:hover {
-      p {
-        text-decoration: underline;
-      }
-    }
-  }
-  .published-date {
-    font-size: 1rem;
-    line-height: 1;
-    @include respond-below(md) {
-      font-size: 0.85rem;
-    }
-  }
 }
 
 .post-wrapper {
@@ -456,7 +418,7 @@ ol {
     font-family: "BergenMono-Regular", sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--light-pink);
+    color: #c838c4;
   }
 }
 
@@ -503,7 +465,7 @@ ol {
     font-family: "BergenMono-Regular", sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--light-pink);
+    color: #c838c4;
   }
   h2,
   h3,
@@ -513,7 +475,7 @@ ol {
     font-family: "BergenMono-Regular", sans-serif;
     text-transform: uppercase;
     font-weight: bold;
-    color: var(--light-pink);
+    color: #c838c4;
     margin-bottom: 0.25em;
     margin-top: 1.5em;
   }
@@ -654,12 +616,33 @@ ol {
 }
 
 .author-bio-img {
-  border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 1) !important;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
 }
 
 .post-content {
   .author-name {
     text-transform: none;
+  }
+}
+
+.authors-list {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  h2 {
+    font-family: "BergenMono-Regular", sans-serif;
+    text-transform: none;
+  }
+  .author-img {
+    border-radius: 50%;
+    border: 1px solid #33356b !important;
+  }
+  a {
+    padding: 1rem;
+    gap: 2rem;
+    &:hover {
+      background: #33356b;
+    }
   }
 }
