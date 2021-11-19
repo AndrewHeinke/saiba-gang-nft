@@ -3,7 +3,7 @@ import styles from "styles/Header.module.scss";
 import Image from "next/image";
 import LogoImg from "../../public/images/logo.png";
 import Link from "next/link";
-import useWindowSize from "../hooks/useWindowSize";
+import useWindowSize from "hooks/useWindowSize";
 import Container from "./Container";
 import Breadcrumbs from "nextjs-breadcrumbs";
 

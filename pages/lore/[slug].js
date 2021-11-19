@@ -23,8 +23,9 @@ export default function Post({ post, content }) {
       <Container>
         <h1 className="post-title">{post?.title}</h1>
       </Container>
-      <div className="post-img-wrapper">
-        {post?.heroImage?.url && (
+
+      {post?.heroImage?.url && (
+        <div className="post-img-wrapper">
           <Image
             src={post.heroImage.url}
             alt=""
@@ -33,9 +34,9 @@ export default function Post({ post, content }) {
             objectPosition="center center"
             priority
           />
-        )}
-      </div>
-      <Container className="post-wrapper">
+        </div>
+      )}
+      <div className="author-wrapper-container">
         <div className="author-wrapper">
           <AuthorLink
             imgSrc={post.authors[0].photo.url}
@@ -45,6 +46,9 @@ export default function Post({ post, content }) {
           />
           <p className="published-date">{formattedTime}</p>
         </div>
+      </div>
+
+      <Container className="post-wrapper">
         {content && (
           <div className="post-content">
             <MDXRemote {...content} components={MarkdownComponents} />

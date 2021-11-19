@@ -1,8 +1,8 @@
 import Container from "components/Container";
 import { getAllPosts } from "lib/graphcms";
 import LoreHeader from "components/LoreHeader";
-import Link from "next/link";
 import Head from "next/head";
+import PostCardList from "components/PostCardList";
 
 export default function Lore({ posts }) {
   return (
@@ -14,15 +14,7 @@ export default function Lore({ posts }) {
       <LoreHeader />
       <Container className="lore-page">
         <h1>Most Recent Posts</h1>
-        <ul>
-          {posts.map((post) => (
-            <li key={post.title}>
-              <Link href={`/lore/${post.slug}`} passHref>
-                {post.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PostCardList posts={posts} withImages />
       </Container>
     </>
   );
