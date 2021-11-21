@@ -6,6 +6,9 @@
   align-items: center;
   text-decoration: none;
   font-weight: bold;
+  img {
+    flex-shrink: 0;
+  }
   p {
     font-size: 1rem;
     margin: 0;

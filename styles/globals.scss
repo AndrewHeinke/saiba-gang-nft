@@ -455,6 +455,7 @@ ol {
 
   @include respond-below(md) {
     font-size: 24px;
+    text-align: left;
   }
 
   @include respond-below(sm) {
@@ -486,6 +487,7 @@ ol {
   ul,
   ol {
     font-size: 0.85em;
+    padding: 0 0 0 2rem;
   }
   a {
     color: var(--yellow);
