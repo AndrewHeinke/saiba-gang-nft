@@ -14,7 +14,7 @@ export default function Lore({ posts }) {
       <LoreHeader />
       <Container className="lore-page">
         <h1>Most Recent Posts</h1>
-        <PostCardList posts={posts} withImages />
+        <PostCardList posts={posts} withImages orientation="vertical" />
       </Container>
     </>
   );

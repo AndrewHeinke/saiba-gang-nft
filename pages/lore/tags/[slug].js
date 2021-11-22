@@ -17,7 +17,9 @@ export default function AllTags({ tag, posts }) {
         {posts.length === 0 && (
           <p>There are currently no posts with this tag</p>
         )}
-        {posts.length > 0 && <PostCardList posts={posts} withImages />}
+        {posts.length > 0 && (
+          <PostCardList posts={posts} withImages orientation="vertical" />
+        )}
       </Container>
     </>
   );
