@@ -3,8 +3,10 @@
 .post-card {
   display: flex;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid #353774;
   border-radius: 0.5rem;
+  background: #353774;
+  overflow: hidden;
   &-stack {
     position: relative;
     width: 100%;
@@ -35,9 +37,6 @@
         height: 200px;
         margin-bottom: 0.5rem;
       }
-      div {
-        border-radius: 0.5rem;
-      }
     }
   }
   &--vertical {
@@ -49,12 +48,6 @@
       margin-top: -1rem;
       margin-left: -1rem;
       margin-right: -1rem;
-      div {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
     }
   }
 }
