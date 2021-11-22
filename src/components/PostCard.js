@@ -15,29 +15,57 @@ const PostCard = ({
     styles[`post-card--${orientation}`]
   );
 
-  return (
-    <Component className={classes}>
-      {image && (
-        <Link href={`/lore/${post.slug}`} passHref>
-          <a className={styles["post-card-image"]}>
-            <Image
-              layout="fill"
-              objectFit="cover"
-              src={post.heroImage.url}
-              alt=""
-            />
-          </a>
-        </Link>
-      )}
-      <div className={styles["post-card-content"]}>
-        <Link href={`/lore/${post.slug}`}>{post.title}</Link>
-        {orientation === "vertical" && (
-          <div className={styles["post-card-spacer"]}></div>
+  if (orientation === "vertical") {
+    return (
+      <Component className={classes}>
+        <div className={styles["post-card-stack"]}>
+          {image && (
+            <Link href={`/lore/${post.slug}`} passHref>
+              <a className={styles["post-card-image"]}>
+                <Image
+                  layout="fill"
+                  objectFit="cover"
+                  src={post.heroImage.url}
+                  alt=""
+                />
+              </a>
+            </Link>
+          )}
+          <Link href={`/lore/${post.slug}`} passHref>
+            <a className={styles["post-card-link"]}>{post.title}</a>
+          </Link>
+
+          {post.tags && (
+            <>
+              <div className={styles["post-card-spacer"]}></div>
+              <Tags tags={post.tags} />
+            </>
+          )}
+        </div>
+      </Component>
+    );
+  } else {
+    return (
+      <Component className={classes}>
+        {image && (
+          <Link href={`/lore/${post.slug}`} passHref>
+            <a className={styles["post-card-image"]}>
+              <Image
+                layout="fill"
+                objectFit="cover"
+                src={post.heroImage.url}
+                alt=""
+              />
+            </a>
+          </Link>
         )}
-        {post.tags && <Tags tags={post.tags} />}
-      </div>
-    </Component>
-  );
+        <div className={styles["post-card-content"]}>
+          <Link href={`/lore/${post.slug}`}>{post.title}</Link>
+          {post.tags && <Tags tags={post.tags} />}
+        </div>
+      </Component>
+    );
+  }
 };
 
 export default PostCard;

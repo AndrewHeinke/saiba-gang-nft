@@ -1,7 +1,12 @@
+@import "mixins";
+
 .post-card-list {
   padding: 0;
-  margin: 1rem 0;
+  margin: 2rem 0;
   display: grid;
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  @include respond-below(sm) {
+    grid-gap: 1rem;
+  }
 }
