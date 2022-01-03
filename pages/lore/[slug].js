@@ -38,12 +38,20 @@ export default function Post({ post, content }) {
       )}
       <div className="author-wrapper-container">
         <div className="author-wrapper">
-          <AuthorLink
-            imgSrc={post.authors[0].photo.url}
-            name={post?.authors[0]?.name}
-            slug={post?.authors[0]?.slug}
-            role="author"
-          />
+          {!post.authors[0] ? (
+            <AuthorLink
+              name="Saiba Gang Team"
+              role="author"
+              imgSrc="https://media.graphcms.com/iqoTOz3KSHqHEyADFPRA"
+            />
+          ) : (
+            <AuthorLink
+              imgSrc={post.authors[0].photo.url}
+              name={post?.authors[0]?.name}
+              slug={post?.authors[0]?.slug}
+              role="author"
+            />
+          )}
           <p className="published-date">{formattedTime}</p>
         </div>
       </div>

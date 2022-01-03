@@ -10,6 +10,27 @@ const AuthorLink = ({
   imgSize = 40,
   textSizeLg = false,
 }) => {
+  if (!slug) {
+    return (
+      <div className={styles["author-link"]}>
+        {imgSrc && (
+          <Image
+            src={imgSrc}
+            className="author-img"
+            alt={`${name} - Saiba Gang Author`}
+            width={imgSize}
+            height={imgSize}
+            layout="fixed"
+          />
+        )}
+        <div>
+          {role && <span className={styles["author-rank"]}>{role}</span>}
+          {textSizeLg && <h2>{name}</h2>}
+          {!textSizeLg && <p>{name}</p>}
+        </div>
+      </div>
+    );
+  }
   return (
     <Link href={`/lore/authors/${slug}`} passHref>
       <a className={styles["author-link"]}>
