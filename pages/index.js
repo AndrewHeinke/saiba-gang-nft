@@ -17,28 +17,32 @@ export default function Home() {
   return (
     <Layout size={size}>
       <Banner size={size} />
-      <Section id="lore">
+      <Section id="about">
         <Container className="mb-2">
-          <h2>Lore</h2>
+          <h2>About Us</h2>
           <p>
-            It is the year 2167 in Wintermoon City, and technology has advanced
-            to the point where human cybernetic enhancement is commonplace in
-            the underground community.
+            Oppressed and ready to fight, the Saiba Gang live under the tyranny
+            of the Kaze Collective in Wintermon City, waiting for their moment
+            to strike.
           </p>
           <p>
-            The nefarious technocrats that control Wintermoon City, the Kaze
-            Collective, make life on the streets a brutal existence. Teens are
-            forced to fight and steal to survive.
+            There does not exist a richer storyline within the Solana ecosystem
+            than that of the Saiba Gang. The initial Saiba Gang NFT launch was
+            performed on the Solana ecosystem due to Solana&apos;s favorable gas
+            prices. Solana is a top five marketcap blockchain with incredible
+            speed and performance, as well as efficient networking costs which
+            result in notably less money spent on transaction fees. With that
+            said, the Saiba Gang team and community support cross-chain ideals!
           </p>
           <p>
-            Alone they struggle to get by, but together... they just might make
-            it. That is why these cybernetically enhanced street punks came
-            together to form the Saiba Gang.
+            The Saiba Gang team aims to produce a manga that rivals the highest
+            quality mainstream manga. We will do all of this while
+            community-sourcing lore to add in to our story. Our manga will be
+            released on a set cadence on the Webtoons platform.
           </p>
           <p>
-            These eccentric rebels are bound to have some adventures. They might
-            even be the only force that can topple the system and overthrow the
-            Kaze Collective.
+            Together, with our community, Saiba Gang will create one of the most
+            badass manga out there.
           </p>
         </Container>
         <div className="overflow-scroll">
@@ -104,6 +108,87 @@ export default function Home() {
           <h2>Rarity</h2>
           <RarityCarousel />
         </Section> */}
+        <Section id="buy">
+          <Container>
+            <h2>How to Buy</h2>
+            <p>
+              Saiba Gang NFTs are held on the Solana blockchain. A huge benefit
+              to that is that it is extremely user friendly to get started
+              getting your first Solana NFT compared to other ecosystems!
+            </p>
+            <p>
+              Your first step is to get a wallet. “Wallets” let a user hold
+              cryptocurrency and NFTs. In the Solana ecosystem, the preferred
+              wallet is the Phantom wallet. To create your first wallet, visit{" "}
+              <a
+                className="content-link"
+                rel="noreferrer"
+                target="_blank"
+                href="https://phantom.app/"
+              >
+                https://phantom.app/
+              </a>{" "}
+              and follow the instructions to add the wallet to your browser.
+              Help for that can be found at this link:{" "}
+              <a
+                className="content-link"
+                rel="noreferrer"
+                target="_blank"
+                href="https://help.phantom.app/hc/en-us/articles/4406388623251-How-to-create-a-new-wallet"
+              >
+                https://help.phantom.app/hc/en-us/articles/4406388623251-How-to-create-a-new-wallet
+              </a>
+            </p>
+            <p>
+              Once you are finished creating your wallet, and you have all of
+              your wallet details written down and stored in a secure location,
+              you are ready to add some SOL to your wallet. The easiest way to
+              do this is to send SOL from your preferred cryptocurrency
+              exchange, like Coinbase, to the wallet address that you have just
+              created. You can see a detailed guide here:{" "}
+              <a
+                className="content-link"
+                rel="noreferrer"
+                target="_blank"
+                href="https://decentralizedcreator.com/deposit-solana-to-phantom-wallet/"
+              >
+                https://decentralizedcreator.com/deposit-solana-to-phantom-wallet/
+              </a>
+            </p>
+            <p>
+              Now that you&apos;ve added SOL to your wallet, you are ready to
+              purchase some NFTs!
+            </p>
+            <p>
+              At this moment, the preferred marketplace is Magic Eden. The
+              founders are a great group of developers, and they have proven
+              themselves to be hard working and reliable. You can visit their
+              website here:{" "}
+              <a
+                className="content-link"
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.magiceden.io/marketplace"
+              >
+                https://www.magiceden.io/marketplace
+              </a>
+              . Once on their site, connect your Phantom wallet.
+            </p>
+            <p>
+              To buy a Saiba Gang, you can simply search for us on Magic Eden,
+              or follow this link to find our project:{" "}
+              <a
+                className="content-link"
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.magiceden.io/marketplace/saiba_gang"
+              >
+                https://www.magiceden.io/marketplace/saiba_gang
+              </a>
+              .
+            </p>
+          </Container>
+        </Section>
         <Section id="team">
           <h2>The Team</h2>
           <div className="grid">
@@ -147,19 +232,19 @@ export default function Home() {
             </div>
             <div className="team-member-card">
               <Image
-                src="/images/Goku.png"
-                alt="Goku Saiba Gang"
+                src="/images/davo.png"
+                alt="Dav0 Gang"
                 height={500}
                 width={500}
               />
               <a
                 rel="noreferrer"
                 target="_blank"
-                href="https://twitter.com/goku_nft"
+                href="https://twitter.com/Davestat0r"
                 className="twitterLink"
               >
                 <Twitter />
-                Goku
+                Dav0
                 <br />
                 Community Manager
               </a>

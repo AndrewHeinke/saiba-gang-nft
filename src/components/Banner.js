@@ -32,33 +32,34 @@ export default function Banner({ size }) {
           priority
         />
         <div className={styles["mobile-banner-content"]}>
-          <div className="bg-confetti-animated">
-            <div className={styles["mobile-banner-title"]}>
-              <h1 className="sr-only">Saiba Gang</h1>
-              <div className={mintStyles["mint-countdown"]}>
-                <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
-                <p style={{ textAlign: "center" }}>Purchase on marketplace:</p>
-                <div className="secondary-wrapper">
-                  <a
-                    className="secondary-link"
-                    href="https://solanart.io/collections/saibagang"
-                  >
-                    <img
-                      src="images/solanart-logo.png"
-                      alt="Saiba Gang on Solanart"
-                    />
-                    Solanart
-                  </a>
-                  <a
-                    className="secondary-link"
-                    href="https://magiceden.io/marketplace/saiba_gang"
-                  >
-                    <MagicEdenLogo className="magic-eden" />
-                    <span className="sr-only">
-                      Buy Saiba Gang NFT on Magic Eden
-                    </span>
-                  </a>
-                </div>
+          <div className={styles["mobile-banner-title"]}>
+            <h1 className="sr-only">Saiba Gang</h1>
+            <div className={mintStyles["mint-countdown"]}>
+              <p style={{ textAlign: "center" }}>
+                Purchase Saiba Gang NFTs
+                <br />
+                on these marketplaces:
+              </p>
+              <div className="secondary-wrapper">
+                <a
+                  className="secondary-link"
+                  href="https://solanart.io/collections/saibagang"
+                >
+                  <img
+                    src="images/solanart-logo.png"
+                    alt="Saiba Gang on Solanart"
+                  />
+                  Solanart
+                </a>
+                <a
+                  className="secondary-link"
+                  href="https://magiceden.io/marketplace/saiba_gang"
+                >
+                  <MagicEdenLogo className="magic-eden" />
+                  <span className="sr-only">
+                    Buy Saiba Gang NFT on Magic Eden
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -87,30 +88,31 @@ export default function Banner({ size }) {
         <h1 className="sr-only">Saiba Gang</h1>
         <Container>
           <div className={styles["banner-content"]}>
-            <div className="bg-confetti-animated">
-              <p className={mintStyles["mint-countdown-title"]}>SOLD OUT!</p>
-              <p style={{ textAlign: "center" }}>Purchase on marketplace:</p>
-              <div className="secondary-wrapper">
-                <a
-                  className="secondary-link"
-                  href="https://solanart.io/collections/saibagang"
-                >
-                  <img
-                    src="images/solanart-logo.png"
-                    alt="Saiba Gang on Solanart"
-                  />
-                  Solanart
-                </a>
-                <a
-                  className="secondary-link"
-                  href="https://magiceden.io/marketplace/saiba_gang"
-                >
-                  <MagicEdenLogo className="magic-eden" />
-                  <span className="sr-only">
-                    Buy Saiba Gang NFT on Magic Eden
-                  </span>
-                </a>
-              </div>
+            <p style={{ textAlign: "center", marginTop: "16px" }}>
+              Purchase Saiba Gang NFTs
+              <br />
+              on these marketplaces:
+            </p>
+            <div className="secondary-wrapper">
+              <a
+                className="secondary-link"
+                href="https://solanart.io/collections/saibagang"
+              >
+                <img
+                  src="images/solanart-logo.png"
+                  alt="Saiba Gang on Solanart"
+                />
+                Solanart
+              </a>
+              <a
+                className="secondary-link"
+                href="https://magiceden.io/marketplace/saiba_gang"
+              >
+                <MagicEdenLogo className="magic-eden" />
+                <span className="sr-only">
+                  Buy Saiba Gang NFT on Magic Eden
+                </span>
+              </a>
             </div>
           </div>
         </Container>

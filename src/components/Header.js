@@ -51,13 +51,13 @@ export default function Header({ size }) {
               <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
-                  to="lore"
+                  to="about"
                   spy={true}
                   smooth={true}
                   offset={-70}
                   duration={350}
                 >
-                  Lore
+                  About
                 </ScrollLink>
               </li>
               <li className={styles["header-link"]}>
@@ -124,13 +124,13 @@ export default function Header({ size }) {
             <li className={styles["header-link"]}>
               <ScrollLink
                 activeClass={styles["header-link--active"]}
-                to="lore"
+                to="about"
                 spy={true}
                 smooth={true}
                 offset={-70}
                 duration={350}
               >
-                Lore
+                About
               </ScrollLink>
             </li>
             <li className={styles["header-link"]}>

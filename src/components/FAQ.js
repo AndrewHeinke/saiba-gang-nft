@@ -11,15 +11,6 @@ export default function FAQ() {
           lore.
         </p>
       </Collapse>
-      <Collapse title="When is the launch?">
-        <p>Our official mint date is November 1st 2021 at 2:00PM EST.</p>
-      </Collapse>
-      <Collapse title="How much is the mint?">
-        <p>Mint price will be 0.88 sol.</p>
-      </Collapse>
-      <Collapse title="Is there a whitelist?">
-        <p>We have made the decision as a project to not have a whitelist.</p>
-      </Collapse>
       <Collapse title="Where can I learn more about the Saiba Gang?">
         <p>Join us on Twitter and Discord to learn more about our project!</p>
       </Collapse>

@@ -669,3 +669,14 @@ ol {
   width: 100%;
   padding: 0 1rem;
 }
+
+.content-link {
+  color: var(--light-pink);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  &:hover {
+    color: var(--pink);
+  }
+}
