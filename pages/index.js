@@ -185,7 +185,6 @@ export default function Home() {
               >
                 https://www.magiceden.io/marketplace/saiba_gang
               </a>
-              .
             </p>
           </Container>
         </Section>
