@@ -21,13 +21,13 @@ export default function Home() {
         <Container className="mb-2">
           <h2>About Us</h2>
           <p>
-            Escape into a world-class manga and a fun anime lovers' community with Saiba Gang. We offer one of the richest stories in the metaverse and the premier manga on the blockchain.
+            Escape into a world&mdash;class manga and a fun anime lovers&apos; community with Saiba Gang. We offer one of the richest stories in the metaverse and the premier manga on the blockchain.
           </p>
           <p>
-            Solana is environmentally friendly and has negligible tranaction fees, making it the top choice for our community. It is also a top-five marketcap blockchain with incredible speed and performance. However, we believe the future is cross-chain!
+            Solana is environmentally friendly and has negligible tranaction fees, making it the top choice for our community. It is also a top&mdash;five marketcap blockchain with incredible speed and performance. However, we believe the future is cross&mdash;chain!
           </p>
           <p>
-            Join our community to participate in the storytelling and world-building and earn rewards (incuding NFTs!) for participating in the community! You can also tell your own Saiba's story and get paid to publish it on our website! We believe in the importance of community and in making crypto accessible to all.
+            Join our community to participate in the storytelling and world&mdash;building and earn rewards (incuding NFTs!) for participating in the community! You can also tell your own Saiba&apos;s story and get paid to publish it on our website! We believe in the importance of community and in making crypto accessible to all.
           </p>
           <p>
             Together, with our community, Saiba Gang is creating one of the most badass manga out there.
