@@ -21,28 +21,16 @@ export default function Home() {
         <Container className="mb-2">
           <h2>About Us</h2>
           <p>
-            Oppressed and ready to fight, the Saiba Gang live under the tyranny
-            of the Kaze Collective in Wintermon City, waiting for their moment
-            to strike.
+            Escape into a world-class manga and a fun anime lovers' community with Saiba Gang. We offer one of the richest stories in the metaverse and the premier manga on the blockchain.
           </p>
           <p>
-            There does not exist a richer storyline within the Solana ecosystem
-            than that of the Saiba Gang. The initial Saiba Gang NFT launch was
-            performed on the Solana ecosystem due to Solana&apos;s favorable gas
-            prices. Solana is a top five marketcap blockchain with incredible
-            speed and performance, as well as efficient networking costs which
-            result in notably less money spent on transaction fees. With that
-            said, the Saiba Gang team and community support cross-chain ideals!
+            Solana is environmentally friendly and has negligible tranaction fees, making it the top choice for our community. It is also a top-five marketcap blockchain with incredible speed and performance. However, we believe the future is cross-chain!
           </p>
           <p>
-            The Saiba Gang team aims to produce a manga that rivals the highest
-            quality mainstream manga. We will do all of this while
-            community-sourcing lore to add in to our story. Our manga will be
-            released on a set cadence on the Webtoons platform.
+            Join our community to participate in the storytelling and world-building and earn rewards (incuding NFTs!) for participating in the community! You can also tell your own Saiba's story and get paid to publish it on our website! We believe in the importance of community and in making crypto accessible to all.
           </p>
           <p>
-            Together, with our community, Saiba Gang will create one of the most
-            badass manga out there.
+            Together, with our community, Saiba Gang is creating one of the most badass manga out there.
           </p>
         </Container>
         <div className="overflow-scroll">
