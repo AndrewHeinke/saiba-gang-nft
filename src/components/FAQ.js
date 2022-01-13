@@ -16,7 +16,7 @@ export default function FAQ() {
       </Collapse>
  <Collapse title="What are some common terms in NFTs I need to understand?">
         <p>
-          This article has a comprehensive list of most of the main NFT terms you hear around the space. It has Ethereum NFTs in mind, however most of the terms there are the exact same as used in Solana. <a class="content-link" rel="noreferrer" target="_blank" href="https://medium.datadriveninvestor.com/23-nft-terms-you-need-to-know-74ebd46c78be?gi=2a9e4abefe93">https://medium.datadriveninvestor.com/23-nft-terms-you-need-to-know-74ebd46c78be?gi=2a9e4abefe93</a>
+          This article has a comprehensive list of most of the main NFT terms you hear around the space. It has Ethereum NFTs in mind, however most of the terms there are the exact same as used in Solana. <a className="content-link" rel="noreferrer" target="_blank" href="https://medium.datadriveninvestor.com/23-nft-terms-you-need-to-know-74ebd46c78be?gi=2a9e4abefe93">https://medium.datadriveninvestor.com/23-nft-terms-you-need-to-know-74ebd46c78be?gi=2a9e4abefe93</a>
         </p>
       </Collapse>
  <Collapse title="What does Web3 mean?">
@@ -26,7 +26,7 @@ export default function FAQ() {
       </Collapse>
 <Collapse title="What is the rewards program?">
         <p>
-          Our reward system is an internally managed &apos;currency&apos; which is awarded to those who help promote Saiba Gang on social media. It allows people to help the project, and then be rewarded in a meangingful way by doing so. Details of the rules can be found in our Discord, and in the following Medium article: <a class="content-link" rel="noreferrer" target="_blank" href="https://saibagang.medium.com/the-saiya-rewards-system-3f382bb58a27">https://saibagang.medium.com/the-saiya-rewards-system-3f382bb58a27</a>
+          Our reward system is an internally managed &apos;currency&apos; which is awarded to those who help promote Saiba Gang on social media. It allows people to help the project, and then be rewarded in a meangingful way by doing so. Details of the rules can be found in our Discord, and in the following Medium article: <a className="content-link" rel="noreferrer" target="_blank" href="https://saibagang.medium.com/the-saiya-rewards-system-3f382bb58a27">https://saibagang.medium.com/the-saiya-rewards-system-3f382bb58a27</a>
         </p>
       </Collapse>
 <Collapse title="Why is your manga on Webtoons?">
