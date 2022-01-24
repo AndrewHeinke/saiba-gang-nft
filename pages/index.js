@@ -10,6 +10,10 @@ import Image from "next/image";
 import { Parallax } from "react-scroll-parallax";
 import useWindowSize from "../src/hooks/useWindowSize";
 import { Twitter } from "components/Icons";
+import ZooksImage from "../public/images/Zooks.png";
+import LeisureBoiImage from "../public/images/Leisure-Boi.png";
+import JessicaImage from "../public/images/Jessica.png";
+import DavoImage from "../public/images/davo.png";
 
 export default function Home() {
   const size = useWindowSize();
@@ -21,16 +25,26 @@ export default function Home() {
         <Container className="mb-2">
           <h2>About Us</h2>
           <p>
-            Escape into a world&mdash;class manga and a fun anime lovers&apos; community with Saiba Gang. We offer one of the richest stories in the metaverse and the premier manga on the blockchain.
+            Escape into a world-class manga and a fun anime lovers&apos;
+            community with Saiba Gang. We offer one of the richest stories in
+            the metaverse and the premier manga on the Solana blockchain.
           </p>
           <p>
-            Solana is environmentally friendly and has negligible tranaction fees, making it the top choice for our community. It is also a top&mdash;five marketcap blockchain with incredible speed and performance. However, we believe the future is cross&mdash;chain!
+            Solana is environmentally friendly and has negligible transaction
+            fees, making it the top choice for our community. It is also a
+            top-five marketcap blockchain with incredible speed and performance.
+            However, we believe the future is cross-chain!
           </p>
           <p>
-            Join our community to participate in the storytelling and world&mdash;building and earn rewards (incuding NFTs!) for participating in the community! You can also tell your own Saiba&apos;s story and get paid to publish it on our website! We believe in the importance of community and in making crypto accessible to all.
+            Join our community to participate in the storytelling and
+            world-building and earn rewards (including NFTs!) for participating
+            in the community! You can also tell your own Saiba&apos;s story and
+            get paid to publish it on our website! We believe in the importance
+            of community and in making crypto accessible to all.
           </p>
           <p>
-            Together, with our community, Saiba Gang is creating one of the most badass manga out there.
+            Together, with our community, Saiba Gang is creating one of the most
+            badass manga out there.
           </p>
         </Container>
         <div className="overflow-scroll">
@@ -46,6 +60,7 @@ export default function Home() {
                 height={300}
                 width={300}
                 layout="responsive"
+                priority
               />
             </div>
             <div className="gallery-img">
@@ -55,6 +70,7 @@ export default function Home() {
                 height={300}
                 width={300}
                 layout="responsive"
+                priority
               />
             </div>
             <div className="gallery-img">
@@ -64,6 +80,7 @@ export default function Home() {
                 height={300}
                 width={300}
                 layout="responsive"
+                priority
               />
             </div>
             <div className="gallery-img">
@@ -73,6 +90,7 @@ export default function Home() {
                 height={300}
                 width={300}
                 layout="responsive"
+                priority
               />
             </div>
             <div className="gallery-img">
@@ -82,6 +100,7 @@ export default function Home() {
                 height={300}
                 width={300}
                 layout="responsive"
+                priority
               />
             </div>
           </Parallax>
@@ -97,94 +116,95 @@ export default function Home() {
           <RarityCarousel />
         </Section> */}
         <Section id="buy">
-          <Container>
-            <h2>How to Buy</h2>
-            <p>
-              Saiba Gang NFTs are held on the Solana blockchain. A huge benefit
-              to that is that it is extremely user friendly to get started
-              getting your first Solana NFT compared to other ecosystems!
-            </p>
-            <p>
-              Your first step is to get a wallet. “Wallets” let a user hold
-              cryptocurrency and NFTs. In the Solana ecosystem, the preferred
-              wallet is the Phantom wallet. To create your first wallet, visit{" "}
-              <a
-                className="content-link"
-                rel="noreferrer"
-                target="_blank"
-                href="https://phantom.app/"
-              >
-                https://phantom.app/
-              </a>{" "}
-              and follow the instructions to add the wallet to your browser.
-              Help for that can be found at this link:{" "}
-              <a
-                className="content-link"
-                rel="noreferrer"
-                target="_blank"
-                href="https://help.phantom.app/hc/en-us/articles/4406388623251-How-to-create-a-new-wallet"
-              >
-                https://help.phantom.app/hc/en-us/articles/4406388623251-How-to-create-a-new-wallet
-              </a>
-            </p>
-            <p>
-              Once you are finished creating your wallet, and you have all of
-              your wallet details written down and stored in a secure location,
-              you are ready to add some SOL to your wallet. The easiest way to
-              do this is to send SOL from your preferred cryptocurrency
-              exchange, like Coinbase, to the wallet address that you have just
-              created. You can see a detailed guide here:{" "}
-              <a
-                className="content-link"
-                rel="noreferrer"
-                target="_blank"
-                href="https://decentralizedcreator.com/deposit-solana-to-phantom-wallet/"
-              >
-                https://decentralizedcreator.com/deposit-solana-to-phantom-wallet/
-              </a>
-            </p>
-            <p>
-              Now that you&apos;ve added SOL to your wallet, you are ready to
-              purchase some NFTs!
-            </p>
-            <p>
-              At this moment, the preferred marketplace is Magic Eden. The
-              founders are a great group of developers, and they have proven
-              themselves to be hard working and reliable. You can visit their
-              website here:{" "}
-              <a
-                className="content-link"
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.magiceden.io/marketplace"
-              >
-                https://www.magiceden.io/marketplace
-              </a>
-              . Once on their site, connect your Phantom wallet.
-            </p>
-            <p>
-              To buy a Saiba Gang, you can simply search for us on Magic Eden,
-              or follow this link to find our project:{" "}
-              <a
-                className="content-link"
-                rel="noreferrer"
-                target="_blank"
-                href="https://www.magiceden.io/marketplace/saiba_gang"
-              >
-                https://www.magiceden.io/marketplace/saiba_gang
-              </a>
-            </p>
-          </Container>
+          <h2>How to Buy</h2>
+          <p>
+            Saiba Gang NFTs are held on the Solana blockchain. A huge benefit to
+            that is that it is extremely user friendly to get started getting
+            your first Solana NFT compared to other ecosystems!
+          </p>
+          <p>
+            Your first step is to get a wallet. “Wallets” let a user hold
+            cryptocurrency and NFTs. In the Solana ecosystem, the preferred
+            wallet is the Phantom wallet. To create your first wallet, visit{" "}
+            <a
+              className="content-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://phantom.app/"
+            >
+              https://phantom.app/
+            </a>{" "}
+            and follow the instructions to add the wallet to your browser. Help
+            for that can be found at{" "}
+            <a
+              className="content-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://help.phantom.app/hc/en-us/articles/4406388623251-How-to-create-a-new-wallet"
+            >
+              this link
+            </a>
+            .
+          </p>
+          <p>
+            Once you are finished creating your wallet, and you have all of your
+            wallet details written down and stored in a secure location, you are
+            ready to add some SOL to your wallet. The easiest way to do this is
+            to send SOL from your preferred cryptocurrency exchange, like
+            Coinbase, to the wallet address that you have just created. You can
+            see a{" "}
+            <a
+              className="content-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://decentralizedcreator.com/deposit-solana-to-phantom-wallet/"
+            >
+              detailed guide here
+            </a>
+            .
+          </p>
+          <p>
+            Now that you&apos;ve added SOL to your wallet, you are ready to
+            purchase some NFTs!
+          </p>
+          <p>
+            At this moment, the preferred marketplace is Magic Eden. The
+            founders are a great group of developers, and they have proven
+            themselves to be hard working and reliable. You can{" "}
+            <a
+              className="content-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.magiceden.io/marketplace"
+            >
+              visit their website
+            </a>
+            . Once on their site, connect your Phantom wallet.
+          </p>
+          <p>
+            To buy a Saiba Gang, you can simply search for us on Magic Eden, or
+            follow{" "}
+            <a
+              className="content-link"
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.magiceden.io/marketplace/saiba_gang"
+            >
+              this link
+            </a>{" "}
+            to find our project.
+          </p>
         </Section>
         <Section id="team">
           <h2>The Team</h2>
           <div className="grid">
             <div className="team-member-card">
               <Image
-                src="/images/Zooks.png"
+                src={ZooksImage}
                 alt="Zooks Saiba Gang"
                 height={500}
                 width={500}
+                placeholder="blur"
               />
               <a
                 rel="noreferrer"
@@ -200,10 +220,11 @@ export default function Home() {
             </div>
             <div className="team-member-card">
               <Image
-                src="/images/Leisure-Boi.png"
+                src={LeisureBoiImage}
                 alt="Saiba Gang"
                 height={500}
                 width={500}
+                placeholder="blur"
               />
               <a
                 rel="noreferrer"
@@ -219,10 +240,11 @@ export default function Home() {
             </div>
             <div className="team-member-card">
               <Image
-                src="/images/davo.png"
+                src={DavoImage}
                 alt="Dav0 Gang"
                 height={500}
                 width={500}
+                placedholder="blur"
               />
               <a
                 rel="noreferrer"
@@ -238,10 +260,11 @@ export default function Home() {
             </div>
             <div className="team-member-card">
               <Image
-                src="/images/Jessica.png"
+                src={JessicaImage}
                 alt="Jessica Saiba Gang"
                 height={500}
                 width={500}
+                placeholder="blur"
               />
               <a
                 rel="noreferrer"

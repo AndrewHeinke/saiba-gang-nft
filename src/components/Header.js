@@ -72,6 +72,18 @@ export default function Header({ size }) {
                   Roadmap
                 </ScrollLink>
               </li>
+              <li className={styles["header-link"]}>
+                <ScrollLink
+                  activeClass={styles["header-link--active"]}
+                  to="buy"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={350}
+                >
+                  Buy
+                </ScrollLink>
+              </li>
               {/* <li className={styles["header-link"]}>
                 <ScrollLink
                   activeClass={styles["header-link--active"]}
@@ -143,6 +155,18 @@ export default function Header({ size }) {
                 duration={350}
               >
                 Roadmap
+              </ScrollLink>
+            </li>
+            <li className={styles["header-link"]}>
+              <ScrollLink
+                activeClass={styles["header-link--active"]}
+                to="buy"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={350}
+              >
+                Buy
               </ScrollLink>
             </li>
             {/* <li className={styles["header-link"]}>
