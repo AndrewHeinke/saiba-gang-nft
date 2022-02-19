@@ -680,3 +680,19 @@ ol {
     color: var(--pink);
   }
 }
+
+.manga-image-wrapper {
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: unset !important;
+  }
+
+  .manga-image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+}
