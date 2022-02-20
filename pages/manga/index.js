@@ -12,6 +12,7 @@ import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
 import fetchJSON from "../../lib/fetchJSON";
+import Router from "next/router";
 
 export default function Manga() {
   const { wallet, mutateWallet } = useWallet();
@@ -20,17 +21,12 @@ export default function Manga() {
   const [connectedWallet, setConnectedWallet] = useState(false);
 
   useEffect(() => {
-    console.log("window.solana", window?.solana);
     if (window["solana"]?.isPhantom) {
       setPhantom(window["solana"]);
+    } else {
+      Router.reload(window.location.pathname);
     }
   }, []);
-
-  useEffect(() => {
-    if (window) {
-      console.log("window", window);
-    }
-  }, [window]);
 
   console.log("phantom", phantom);
 
@@ -81,8 +77,6 @@ export default function Manga() {
   };
 
   const connectWallet = async (publicKey) => {
-    console.log("connectWallet publicKey", publicKey);
-    console.log("phantom.publicKey", phantom?.publicKey);
     try {
       mutateWallet(
         await axios("/api/connect", {
@@ -102,7 +96,6 @@ export default function Manga() {
   };
 
   const connectHandler = () => {
-    console.log("phantom in connectHandler", phantom);
     phantom?.connect().then(() => connectWallet(phantom.publicKey));
   };
 
