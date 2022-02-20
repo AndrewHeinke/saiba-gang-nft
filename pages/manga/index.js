@@ -5,7 +5,6 @@ import {
   getParsedNftAccountsByOwner,
   isValidSolanaAddress,
 } from "@nfteyez/sol-rayz";
-import Image from "next/image";
 import Container from "components/Container";
 import MangaHeader from "components/MangaHeader";
 import Head from "next/head";
@@ -18,10 +17,11 @@ export default function Manga() {
   const { wallet, mutateWallet } = useWallet();
   const [phantom, setPhantom] = useState(null);
   const [nfts, setNfts] = useState(null);
-  const [saiba, setSaiba] = useState(null);
   const [connectedWallet, setConnectedWallet] = useState(false);
 
   useEffect(() => {
+    console.log("window", window);
+    console.log("window.solana", window?.solana);
     if (window["solana"]?.isPhantom) {
       setPhantom(window["solana"]);
     }
@@ -38,8 +38,6 @@ export default function Manga() {
       return elem.data.symbol === value ? elem : undefined;
     });
   };
-
-  console.log(wallet);
 
   const setSaibasInWallet = async () => {
     try {
@@ -93,12 +91,12 @@ export default function Manga() {
   };
 
   const connectHandler = () => {
+    console.log("phantom in connectHandler", phantom);
     phantom?.connect().then(() => connectWallet(phantom.publicKey));
   };
 
   const disconnectHandler = () => {
     phantom?.disconnect();
-    setSaiba(null);
     setConnectedWallet(false);
 
     const disconnectWallet = async (e) => {
@@ -121,20 +119,6 @@ export default function Manga() {
           <button onClick={connectHandler}>Connect to Phantom</button>
         ) : (
           <button onClick={disconnectHandler}>Disconnect from Phantom</button>
-        )}
-
-        {saiba && (
-          <div style={{ display: "flex" }}>
-            <img
-              style={{
-                width: "75px",
-                height: "auto",
-                borderRadius: "5rem",
-                border: "1px solid white",
-              }}
-            />
-            <p>{saiba.name}</p>
-          </div>
         )}
 
         <h1>Episodes</h1>
