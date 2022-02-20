@@ -1,9 +1,11 @@
 import withSession from "../../lib/session";
-import axios from "axios";
 
 export default withSession(async (req, res) => {
+  const { publicKey } = req.body;
+
   const wallet = {
     connected: true,
+    publicKey: publicKey,
   };
   req.session.set("wallet", wallet);
   await req.session.save();

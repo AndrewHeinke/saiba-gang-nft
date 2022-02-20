@@ -5,6 +5,7 @@ import {
   getParsedNftAccountsByOwner,
   isValidSolanaAddress,
 } from "@nfteyez/sol-rayz";
+import Image from "next/image";
 import Container from "components/Container";
 import MangaHeader from "components/MangaHeader";
 import Head from "next/head";
@@ -16,9 +17,9 @@ import fetchJSON from "../../lib/fetchJSON";
 export default function Manga() {
   const { wallet, mutateWallet } = useWallet();
   const [phantom, setPhantom] = useState(null);
-  const [connected, setConnected] = useState(false);
   const [nfts, setNfts] = useState(null);
   const [saiba, setSaiba] = useState(null);
+  const [connectedWallet, setConnectedWallet] = useState(false);
 
   useEffect(() => {
     if (window["solana"]?.isPhantom) {
@@ -27,67 +28,78 @@ export default function Manga() {
   }, []);
 
   useEffect(() => {
-    phantom?.on("connect", () => {
-      setConnected(true);
-    });
-
-    phantom?.on("disconnect", () => {
-      setConnected(false);
-    });
-  }, [phantom]);
-
-  useEffect(() => {
-    if (connected) {
-      const getAllNftData = async () => {
-        try {
-          let ownerToken = phantom.publicKey;
-          const result = isValidSolanaAddress(ownerToken);
-          if (result) {
-            const parsedNfts = await getParsedNftAccountsByOwner({
-              publicAddress: ownerToken,
-              serialization: true,
-            });
-            setNfts(parsedNfts);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      getAllNftData();
+    if (connectedWallet && nfts) {
+      setSaibasInWallet(nfts);
     }
-  }, [phantom, connected]);
+  }, [connectedWallet, nfts]);
 
-  useEffect(() => {
-    if (nfts) {
-      getNftTokenData(getSaibas(nfts)).then((response) =>
-        setSaiba(response.data)
+  const findValue = (arr, value) => {
+    return find(arr, (elem) => {
+      return elem.data.symbol === value ? elem : undefined;
+    });
+  };
+
+  console.log(wallet);
+
+  const setSaibasInWallet = async () => {
+    try {
+      mutateWallet(
+        await axios("/api/checkSaiba", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          data: {
+            saibaImg: nfts ? nfts.data.uri : null,
+            saibaName: nfts ? nfts.data.name : null,
+          },
+        })
       );
+    } catch {
+      console.log(error);
     }
-  }, [nfts]);
+  };
+
+  const getAllNftData = async () => {
+    try {
+      const result = isValidSolanaAddress(phantom.publicKey);
+      if (result) {
+        const parsedNfts = await getParsedNftAccountsByOwner({
+          publicAddress: phantom.publicKey,
+          serialization: true,
+        });
+        setNfts(findValue(parsedNfts, "SBAGNG"));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const connectWallet = async (publicKey) => {
+    try {
+      mutateWallet(
+        await axios("/api/connect", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          data: {
+            publicKey: publicKey,
+            connected: true,
+          },
+        })
+      );
+      getAllNftData();
+      setConnectedWallet(true);
+    } catch (error) {
+      console.error("An unexpected error happened:", error);
+    }
+  };
 
   const connectHandler = () => {
-    phantom?.connect();
-    const connectWallet = async () => {
-      try {
-        mutateWallet(
-          await axios("/api/connect", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            data: { publicKey: phantom.publicKey },
-          })
-        );
-      } catch (error) {
-        console.error("An unexpected error happened:", error);
-      }
-    };
-
-    connectWallet();
+    phantom?.connect().then(() => connectWallet(phantom.publicKey));
   };
 
   const disconnectHandler = () => {
     phantom?.disconnect();
     setSaiba(null);
+    setConnectedWallet(false);
 
     const disconnectWallet = async (e) => {
       mutateWallet(
@@ -96,25 +108,6 @@ export default function Manga() {
       );
     };
     disconnectWallet();
-  };
-
-  const findValue = (arr, value) => {
-    return find(arr, (elem) => {
-      return elem.data.symbol === value ? elem : undefined;
-    });
-  };
-
-  const getSaibas = (nfts) => {
-    return findValue(nfts, "SBAGNG");
-  };
-
-  const getNftTokenData = async (saiba) => {
-    try {
-      const val = await axios.get(saiba.data.uri);
-      return val;
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -139,33 +132,44 @@ export default function Manga() {
                 borderRadius: "5rem",
                 border: "1px solid white",
               }}
-              src={saiba.image}
             />
             <p>{saiba.name}</p>
           </div>
         )}
 
         <h1>Episodes</h1>
-        {saiba && (
-          <ul>
-            <li>
-              <Link href="/manga/episode-1-the-mistake">
-                <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/manga/episode-2-the-beginning">
-                <a className={styles["manga-link"]}>Episode 2: The Beginning</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/manga/episode-3-death">
-                <a className={styles["manga-link"]}>Episode 3: Death</a>
-              </Link>
-            </li>
-          </ul>
-        )}
-        {!saiba && (
+        {wallet?.data?.isSaibaHolder ? (
+          <>
+            <p>{wallet.data.name}</p>
+            <img
+              src={wallet.data.img}
+              style={{
+                width: "75px",
+                height: "75px",
+                border: "1px solid white",
+              }}
+            />
+            <ul>
+              <li>
+                <Link href="/manga/episode-1-the-mistake">
+                  <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/manga/episode-2-the-beginning">
+                  <a className={styles["manga-link"]}>
+                    Episode 2: The Beginning
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/manga/episode-3-death">
+                  <a className={styles["manga-link"]}>Episode 3: Death</a>
+                </Link>
+              </li>
+            </ul>
+          </>
+        ) : (
           <p
             style={{
               padding: "1rem",

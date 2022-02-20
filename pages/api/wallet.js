@@ -10,7 +10,7 @@ export default withSession(async (req, res) => {
     });
   } else {
     res.json({
-      connected: false,
+      isLoggedIn: false,
     });
   }
 });
