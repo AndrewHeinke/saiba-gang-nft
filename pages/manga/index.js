@@ -27,7 +27,9 @@ export default function Manga() {
   }, []);
 
   useEffect(() => {
-    console.log("window", window);
+    if (window) {
+      console.log("window", window);
+    }
   }, [window]);
 
   console.log("phantom", phantom);
