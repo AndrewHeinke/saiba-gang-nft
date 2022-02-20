@@ -20,10 +20,14 @@ export default function Manga() {
   const [connectedWallet, setConnectedWallet] = useState(false);
 
   useEffect(() => {
+    console.log("window", window);
+    console.log("window.solana", window?.solana);
     if (window["solana"]?.isPhantom) {
       setPhantom(window["solana"]);
     }
   }, []);
+
+  console.log("phantom", phantom);
 
   useEffect(() => {
     if (connectedWallet && nfts) {
