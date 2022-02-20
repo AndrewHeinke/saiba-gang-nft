@@ -12,9 +12,10 @@ import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
 import fetchJSON from "../../lib/fetchJSON";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
 export default function Manga() {
+  const router = useRouter();
   const { wallet, mutateWallet } = useWallet();
   const [phantom, setPhantom] = useState(null);
   const [nfts, setNfts] = useState(null);
@@ -95,7 +96,7 @@ export default function Manga() {
 
   const connectHandler = () => {
     if (!phantom) {
-      Router.reload(window.location.pathname);
+      router.reload(window.location.pathname);
     }
     phantom?.connect().then(() => connectWallet(phantom.publicKey));
   };
