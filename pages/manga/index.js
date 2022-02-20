@@ -20,8 +20,6 @@ export default function Manga() {
   const [connectedWallet, setConnectedWallet] = useState(false);
 
   useEffect(() => {
-    console.log("window", window);
-    console.log("window.solana", window?.solana);
     if (window["solana"]?.isPhantom) {
       setPhantom(window["solana"]);
     }
@@ -32,6 +30,8 @@ export default function Manga() {
       setSaibasInWallet(nfts);
     }
   }, [connectedWallet, nfts]);
+
+  console.log("wallet", wallet);
 
   const findValue = (arr, value) => {
     return find(arr, (elem) => {
@@ -72,6 +72,8 @@ export default function Manga() {
   };
 
   const connectWallet = async (publicKey) => {
+    console.log("connectWallet publicKey", publicKey);
+    console.log("phantom.publicKey", phantom?.publicKey);
     try {
       mutateWallet(
         await axios("/api/connect", {
@@ -99,7 +101,7 @@ export default function Manga() {
     phantom?.disconnect();
     setConnectedWallet(false);
 
-    const disconnectWallet = async (e) => {
+    const disconnectWallet = async () => {
       mutateWallet(
         await fetchJSON("/api/disconnect", { method: "POST" }),
         false
