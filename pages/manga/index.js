@@ -23,8 +23,6 @@ export default function Manga() {
   useEffect(() => {
     if (window["solana"]?.isPhantom) {
       setPhantom(window["solana"]);
-    } else {
-      Router.reload(window.location.pathname);
     }
   }, []);
 
@@ -96,6 +94,9 @@ export default function Manga() {
   };
 
   const connectHandler = () => {
+    if (!phantom) {
+      Router.reload(window.location.pathname);
+    }
     phantom?.connect().then(() => connectWallet(phantom.publicKey));
   };
 
