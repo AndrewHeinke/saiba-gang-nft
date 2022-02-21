@@ -12,10 +12,7 @@ import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
 import fetchJSON from "../../lib/fetchJSON";
-import {
-  useConnection,
-  useWallet as useAdaptorWallet,
-} from "@solana/wallet-adapter-react";
+import { useWallet as useAdaptorWallet } from "@solana/wallet-adapter-react";
 
 export default function Manga() {
   const [loading, setLoading] = useState(true);
@@ -33,12 +30,16 @@ export default function Manga() {
 
   useEffect(() => {
     if (nfts) {
+      setLoading(false);
       setSaibasInWallet();
+    } else if (nfts === undefined) {
+      setLoading(false);
     }
   }, [nfts]);
 
   const resetWallet = async () => {
     setNfts(null);
+    setLoading(true);
     mutateWallet(await fetchJSON("/api/disconnect", { method: "POST" }), false);
   };
 
@@ -73,7 +74,7 @@ export default function Manga() {
           publicAddress: publicKey,
           serialization: true,
         });
-        setNfts(findValue(parsedNfts, "SBAGNG")).then(() => setLoading(false));
+        setNfts(findValue(parsedNfts, "SBAGNG"));
       }
     } catch (error) {
       console.log(error);
@@ -109,44 +110,72 @@ export default function Manga() {
           </div>
         )}
         {publicKey && !nfts && !loading && (
-          <p>No Saiba Gang NFTs in connected wallet.</p>
+          <p style={{ marginBottom: "0" }}>
+            No Saiba Gang NFTs in connected wallet.
+            <br />
+            <a
+              className={styles["manga-link"]}
+              rel="noreferrer"
+              target="_blank"
+              href="https://www.magiceden.io/marketplace"
+            >
+              Purchase Saiba Gang NFT
+            </a>
+          </p>
         )}
 
         <h1>Episodes</h1>
-        {publicKey && wallet?.data?.isSaibaHolder ? (
-          <>
-            <ul>
+        <ul>
+          <li>
+            <Link href="/manga/episode-1-the-mistake">
+              <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/manga/episode-2-the-beginning">
+              <a className={styles["manga-link"]}>Episode 2: The Beginning</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/manga/episode-3-death">
+              <a className={styles["manga-link"]}>Episode 3: Death</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/manga/episode-3-death">
+              <a className={styles["manga-link"]}>
+                Episode 4: The next episode!!!
+              </a>
+            </Link>
+          </li>
+          {publicKey && wallet?.data?.isSaibaHolder ? (
+            <>
               <li>
-                <Link href="/manga/episode-1-the-mistake">
-                  <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/manga/episode-2-the-beginning">
-                  <a className={styles["manga-link"]}>
-                    Episode 2: The Beginning
-                  </a>
+                <Link href="/manga/episode-3-death">
+                  <a className={styles["manga-link"]}>Episode 5: Foo bar baz</a>
                 </Link>
               </li>
               <li>
                 <Link href="/manga/episode-3-death">
-                  <a className={styles["manga-link"]}>Episode 3: Death</a>
+                  <a className={styles["manga-link"]}>
+                    Episode 6: Dun dun dunnnn
+                  </a>
                 </Link>
               </li>
-            </ul>
-          </>
-        ) : (
-          <p
-            style={{
-              padding: "1rem",
-              border: "1px solid #B23A48",
-              background: "#C34655",
-            }}
-          >
-            This content is restricted to Saiba Gang NFT holders. Please connect
-            your wallet to verify and access the content.
-          </p>
-        )}
+            </>
+          ) : (
+            <p
+              style={{
+                padding: ".25rem 1rem",
+                border: "1px solid #B23A48",
+                background: "#C34655",
+              }}
+            >
+              Future manga episodes are restricted to Saiba Gang NFT holders.
+              Please connect your wallet to verify and access the content.
+            </p>
+          )}
+        </ul>
       </Container>
     </>
   );
