@@ -12,7 +12,7 @@ import useWallet from "../../../lib/useWallet";
 const Episode = ({ images, isFree }) => {
   const router = useRouter();
   const { wallet } = useWallet();
-
+  console.log(wallet);
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -63,23 +63,26 @@ const Episode = ({ images, isFree }) => {
               </div>
             );
           })}
-        {!isFree && !wallet && !wallet?.data?.connected && (
+        {!isFree && !wallet?.data?.connected && (
           <p>Connect wallet to verify access</p>
         )}
-        {!isFree && wallet?.data?.connected && !wallet?.data.isSaibaHolder && (
-          <p style={{ marginBottom: "0" }}>
-            No Saiba Gang NFTs in connected wallet.
-            <br />
-            <a
-              className={styles["manga-link"]}
-              rel="noreferrer"
-              target="_blank"
-              href="https://www.magiceden.io/marketplace"
-            >
-              Purchase Saiba Gang NFT
-            </a>
-          </p>
-        )}
+        {!isFree &&
+          wallet?.data?.connected &&
+          wallet?.data?.isSaibaHolder !== undefined &&
+          !wallet?.data.isSaibaHolder && (
+            <p style={{ marginBottom: "0" }}>
+              No Saiba Gang NFTs in connected wallet.
+              <br />
+              <a
+                className={styles["manga-link"]}
+                rel="noreferrer"
+                target="_blank"
+                href="https://www.magiceden.io/marketplace"
+              >
+                Purchase Saiba Gang NFT
+              </a>
+            </p>
+          )}
         {!isFree &&
           wallet?.data?.isSaibaHolder &&
           images.map((image, idx) => {
