@@ -6,6 +6,7 @@ import Link from "next/link";
 import useWindowSize from "hooks/useWindowSize";
 import Container from "./Container";
 import Breadcrumbs from "nextjs-breadcrumbs";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 const Logo = ({ ...restOfProps }) => (
   <div tabIndex={0} className={styles["header-logo"]} {...restOfProps}>
@@ -38,27 +39,7 @@ export default function MangaHeader() {
           )}
 
           <div className={styles["header-social-section"]}>
-            <a
-              href="https://medium.com/@saibagang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Medium className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://twitter.com/SaibaGang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://discord.gg/aRPTxj5FMA"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Discord className={styles["header-link-social"]} />
-            </a>
+            <WalletMultiButton />
           </div>
         </div>
       </header>

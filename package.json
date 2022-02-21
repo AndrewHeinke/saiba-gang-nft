@@ -10,7 +10,11 @@
   },
   "dependencies": {
     "@nfteyez/sol-rayz": "^0.10.0",
-    "@solana/web3.js": "^1.34.0",
+    "@solana/wallet-adapter-base": "^0.9.3",
+    "@solana/wallet-adapter-react": "^0.15.3",
+    "@solana/wallet-adapter-react-ui": "^0.9.5",
+    "@solana/wallet-adapter-wallets": "^0.15.4",
+    "@solana/web3.js": "^1.35.0",
     "axios": "^0.26.0",
     "classnames": "^2.2.6",
     "fs": "0.0.1-security",

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { find } from "lodash";
 import axios from "axios";
 import {
@@ -12,30 +12,35 @@ import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
 import fetchJSON from "../../lib/fetchJSON";
-import { useRouter } from "next/router";
+import {
+  useConnection,
+  useWallet as useAdaptorWallet,
+} from "@solana/wallet-adapter-react";
 
 export default function Manga() {
-  const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const { wallet, mutateWallet } = useWallet();
-  const [phantom, setPhantom] = useState(null);
   const [nfts, setNfts] = useState(null);
-  const [connectedWallet, setConnectedWallet] = useState(false);
+  const { publicKey } = useAdaptorWallet();
 
   useEffect(() => {
-    if (window["solana"]?.isPhantom) {
-      setPhantom(window["solana"]);
+    if (publicKey) {
+      getAllNftData();
+    } else {
+      resetWallet();
     }
-  }, []);
-
-  console.log("phantom", phantom);
+  }, [publicKey]);
 
   useEffect(() => {
-    if (connectedWallet && nfts) {
-      setSaibasInWallet(nfts);
+    if (nfts) {
+      setSaibasInWallet();
     }
-  }, [connectedWallet, nfts]);
+  }, [nfts]);
 
-  console.log("wallet", wallet);
+  const resetWallet = async () => {
+    setNfts(null);
+    mutateWallet(await fetchJSON("/api/disconnect", { method: "POST" }), false);
+  };
 
   const findValue = (arr, value) => {
     return find(arr, (elem) => {
@@ -62,56 +67,17 @@ export default function Manga() {
 
   const getAllNftData = async () => {
     try {
-      const result = isValidSolanaAddress(phantom.publicKey);
+      const result = isValidSolanaAddress(publicKey);
       if (result) {
         const parsedNfts = await getParsedNftAccountsByOwner({
-          publicAddress: phantom.publicKey,
+          publicAddress: publicKey,
           serialization: true,
         });
-        setNfts(findValue(parsedNfts, "SBAGNG"));
+        setNfts(findValue(parsedNfts, "SBAGNG")).then(() => setLoading(false));
       }
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const connectWallet = async (publicKey) => {
-    try {
-      mutateWallet(
-        await axios("/api/connect", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          data: {
-            publicKey: publicKey,
-            connected: true,
-          },
-        })
-      );
-      getAllNftData();
-      setConnectedWallet(true);
-    } catch (error) {
-      console.error("An unexpected error happened:", error);
-    }
-  };
-
-  const connectHandler = () => {
-    if (!phantom) {
-      router.reload(window.location.pathname);
-    }
-    phantom?.connect().then(() => connectWallet(phantom.publicKey));
-  };
-
-  const disconnectHandler = () => {
-    phantom?.disconnect();
-    setConnectedWallet(false);
-
-    const disconnectWallet = async () => {
-      mutateWallet(
-        await fetchJSON("/api/disconnect", { method: "POST" }),
-        false
-      );
-    };
-    disconnectWallet();
   };
 
   return (
@@ -121,24 +87,34 @@ export default function Manga() {
       </Head>
       <MangaHeader />
       <Container>
-        {!wallet?.data?.connected && !wallet?.connected ? (
-          <button onClick={connectHandler}>Connect to Phantom</button>
-        ) : (
-          <button onClick={disconnectHandler}>Disconnect from Phantom</button>
+        {wallet?.data?.isSaibaHolder && (
+          <div>
+            <div
+              style={{
+                display: "inline-flex",
+                height: "75px",
+              }}
+            >
+              <img
+                src={wallet.data.img}
+                style={{
+                  width: "75px",
+                  height: "75px",
+                  border: "1px solid white",
+                  marginRight: "1rem",
+                }}
+              />
+              <p>{wallet.data.name}</p>
+            </div>
+          </div>
+        )}
+        {publicKey && !nfts && !loading && (
+          <p>No Saiba Gang NFTs in connected wallet.</p>
         )}
 
         <h1>Episodes</h1>
-        {wallet?.data?.isSaibaHolder ? (
+        {publicKey && wallet?.data?.isSaibaHolder ? (
           <>
-            <p>{wallet.data.name}</p>
-            <img
-              src={wallet.data.img}
-              style={{
-                width: "75px",
-                height: "75px",
-                border: "1px solid white",
-              }}
-            />
             <ul>
               <li>
                 <Link href="/manga/episode-1-the-mistake">
