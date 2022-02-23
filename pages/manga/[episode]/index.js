@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { useEffect } from "react";
 import styles from "styles/Manga.module.scss";
 import { useRouter } from "next/router";
 import Container from "components/Container";
@@ -12,7 +11,6 @@ import useWallet from "../../../lib/useWallet";
 const Episode = ({ images, isFree }) => {
   const router = useRouter();
   const { wallet } = useWallet();
-  console.log(wallet);
   if (router.isFallback) {
     return <div>Loading...</div>;
   }

@@ -45,7 +45,7 @@ export default function MangaHeader() {
   }, [publicKey]);
 
   useEffect(() => {
-    if (nfts) {
+    if (nfts || nfts === undefined) {
       setSaibasInWallet();
     }
   }, [nfts]);
@@ -73,6 +73,7 @@ export default function MangaHeader() {
           data: {
             saibaImg: nfts ? nfts.data.uri : null,
             saibaName: nfts ? nfts.data.name : null,
+            isSaibaHolder: nfts ? true : null,
           },
         })
       );
