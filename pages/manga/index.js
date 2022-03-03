@@ -10,7 +10,7 @@ import { useWallet as useAdaptorWallet } from "@solana/wallet-adapter-react";
 export default function Manga() {
   const { wallet } = useWallet();
   const { publicKey } = useAdaptorWallet();
-  console.log(wallet);
+
   return (
     <>
       <Head>
@@ -103,6 +103,7 @@ export default function Manga() {
           </Col>
           <Col md={4}>
             <UserCard
+              loading={wallet?.data?.loading}
               isHolder={wallet?.data?.isSaibaHolder}
               name={wallet?.data?.name}
               userImg={wallet?.data?.img}

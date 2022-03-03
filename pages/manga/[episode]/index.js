@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import styles from "styles/Manga.module.scss";
 import { useRouter } from "next/router";
+import { normalizeEpisodeName } from "utils/normalize-episode-name";
 import Container from "components/Container";
 import MangaHeader from "components/MangaHeader";
 import Image from "next/image";
@@ -39,11 +40,11 @@ const Episode = ({ images, isFree }) => {
   return (
     <>
       <Head>
-        <title>Episode: {episode} | Manga | Saiba Gang NFT</title>
+        <title>{normalizeEpisodeName(episode)} | Manga | Saiba Gang NFT</title>
       </Head>
       <MangaHeader />
-      <Container>
-        <h1>Episode: {episode}</h1>
+      <Container className={styles["manga-container"]}>
+        <h1>{normalizeEpisodeName(episode)}</h1>
         {isFree &&
           images.map((image, idx) => {
             return (
