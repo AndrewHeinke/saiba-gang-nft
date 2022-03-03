@@ -1,6 +1,7 @@
 import MangaHeader from "components/MangaHeader";
 import UserCard from "components/UserCard";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
@@ -21,25 +22,44 @@ export default function Manga() {
         <Row wrap="reverse">
           <Col md={8}>
             <h1>Episodes</h1>
-            <ul>
-              <li>
+            <ul className={styles["manga-episode-list"]}>
+              <li className={styles["manga-episode-row"]}>
+                <Image
+                  src="/images/thumbnails/1.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                />
                 <Link href="/manga/episode-1-the-mistake">
                   <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
                 </Link>
               </li>
-              <li>
+              <li className={styles["manga-episode-row"]}>
+                <Image
+                  src="/images/thumbnails/2.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                />
                 <Link href="/manga/episode-2-the-beginning">
                   <a className={styles["manga-link"]}>
                     Episode 2: The Beginning
                   </a>
                 </Link>
               </li>
-              <li>
+              <li className={styles["manga-episode-row"]}>
+                <Image
+                  src="/images/thumbnails/3.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                />
                 <Link href="/manga/episode-3-death">
                   <a className={styles["manga-link"]}>Episode 3: Death</a>
                 </Link>
               </li>
-              <li>
+              <li className={styles["manga-episode-row"]}>
+                <div className={styles["manga-thumbnail-placeholder"]}></div>
                 <Link href="/manga/episode-4">
                   <a className={styles["manga-link"]}>
                     Episode 4: The next episode!!!
@@ -48,14 +68,20 @@ export default function Manga() {
               </li>
               {publicKey && wallet?.data?.isSaibaHolder && (
                 <>
-                  <li>
+                  <li className={styles["manga-episode-row"]}>
+                    <div
+                      className={styles["manga-thumbnail-placeholder"]}
+                    ></div>
                     <Link href="/manga/episode-5">
                       <a className={styles["manga-link"]}>
                         Episode 5: Foo bar baz
                       </a>
                     </Link>
                   </li>
-                  <li>
+                  <li className={styles["manga-episode-row"]}>
+                    <div
+                      className={styles["manga-thumbnail-placeholder"]}
+                    ></div>
                     <Link href="/manga/episode-6">
                       <a className={styles["manga-link"]}>
                         Episode 6: Dun dun dunnnn
