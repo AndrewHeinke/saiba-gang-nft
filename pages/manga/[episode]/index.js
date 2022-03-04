@@ -73,12 +73,11 @@ const Episode = ({ images, isFree }) => {
               No Saiba Gang NFTs in connected wallet.
               <br />
               <a
-                className={styles["manga-link"]}
                 rel="noreferrer"
                 target="_blank"
                 href="https://www.magiceden.io/marketplace"
               >
-                Purchase Saiba Gang NFT
+                Purchase Saiba Gang NFT asdf
               </a>
             </p>
           )}

@@ -5,7 +5,6 @@ export default withSession(async (req, res) => {
 
   const wallet = {
     connected: connected,
-    loading: true,
   };
   req.session.set("wallet", wallet);
   await req.session.save();

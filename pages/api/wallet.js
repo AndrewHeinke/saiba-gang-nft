@@ -5,8 +5,8 @@ export default withSession(async (req, res) => {
 
   if (wallet) {
     res.json({
-      connected: true,
       ...wallet,
+      connected: true,
     });
   } else {
     res.json({

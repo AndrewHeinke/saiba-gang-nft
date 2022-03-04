@@ -18,7 +18,6 @@ export default withSession(async (req, res) => {
 
     res.json({
       ...wallet,
-      loading: false,
       isSaibaHolder: true,
       name: saibaName,
       img: saibaImageUrl?.data?.image,
@@ -26,7 +25,6 @@ export default withSession(async (req, res) => {
   } else {
     res.json({
       ...wallet,
-      loading: false,
       isSaibaHolder: false,
     });
   }

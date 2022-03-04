@@ -116,7 +116,6 @@ export default function Manga() {
                     No Saiba Gang NFTs in connected wallet.
                     <br />
                     <a
-                      className={styles["manga-link"]}
                       rel="noreferrer"
                       target="_blank"
                       href="https://www.magiceden.io/marketplace"

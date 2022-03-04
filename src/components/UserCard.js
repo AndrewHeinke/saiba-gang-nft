@@ -1,10 +1,14 @@
 import styles from "styles/UserCard.module.scss";
 
 export default function UserCard({ isHolder, userImg, name, loading }) {
-  if (isHolder && userImg && name) {
+  if (isHolder && name) {
     return (
       <div className={styles["user-card"]}>
-        <img src={userImg} alt={name} className={styles["user-card-img"]} />
+        {userImg ? (
+          <img src={userImg} alt={name} className={styles["user-card-img"]} />
+        ) : (
+          <div className={styles["user-card-avatar-placeholder"]}></div>
+        )}
         <p className={styles["user-card-name"]}>{name}</p>
       </div>
     );
@@ -22,7 +26,7 @@ export default function UserCard({ isHolder, userImg, name, loading }) {
     <div className={styles["user-card"]}>
       <div className={styles["user-card-avatar-placeholder"]}></div>
       <p className={`text-dim ${styles["user-card-name"]}`}>
-        {!loading ? "No connected wallet" : "Loading..."}
+        No connected wallet
       </p>
     </div>
   );
