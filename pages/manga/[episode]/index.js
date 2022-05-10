@@ -154,7 +154,6 @@ export async function getStaticProps({ params }) {
     })
     .sort(naturalTitleCompare);
 
-  // check if route is free episode
   const freeEpisodes = [
     "episode-1-the-mistake",
     "episode-2-the-beginning",
