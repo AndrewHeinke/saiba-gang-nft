@@ -9,9 +9,31 @@ import Image from "next/image";
 import Head from "next/head";
 import useWallet from "../../../lib/useWallet";
 
+function naturalCompare(a, b) {
+  var ax = [],
+    bx = [];
+
+  a.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+    ax.push([$1 || Infinity, $2 || ""]);
+  });
+  b.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+    bx.push([$1 || Infinity, $2 || ""]);
+  });
+
+  while (ax.length && bx.length) {
+    var an = ax.shift();
+    var bn = bx.shift();
+    var nn = an[0] - bn[0] || an[1].localeCompare(bn[1]);
+    if (nn) return nn;
+  }
+
+  return ax.length - bx.length;
+}
+
 const Episode = ({ images, isFree }) => {
   const router = useRouter();
   const { wallet } = useWallet();
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -56,6 +78,7 @@ const Episode = ({ images, isFree }) => {
                   blurDataURL={`data:image/svg+xml;base64,${toBase64(
                     shimmer(700, 475)
                   )}`}
+                  priority={idx === 0 ? true : false}
                   src={`/images/${episode}/${image}`}
                   alt=""
                 />
@@ -77,7 +100,7 @@ const Episode = ({ images, isFree }) => {
                 target="_blank"
                 href="https://www.magiceden.io/marketplace"
               >
-                Purchase Saiba Gang NFT asdf
+                Purchase Saiba Gang NFT
               </a>
             </p>
           )}
@@ -91,7 +114,7 @@ const Episode = ({ images, isFree }) => {
                   layout="fill"
                   placeholder="blur"
                   blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
+                    shimmer(800, 1130)
                   )}`}
                   src={`/images/${episode}/${image}`}
                   alt=""
@@ -110,7 +133,7 @@ export async function getStaticPaths() {
       { params: { episode: "episode-1-the-mistake" } },
       { params: { episode: "episode-2-the-beginning" } },
       { params: { episode: "episode-3-death" } },
-      { params: { episode: "episode-4" } },
+      { params: { episode: "episode-4-weapons" } },
       { params: { episode: "episode-5" } },
       { params: { episode: "episode-6" } },
     ],
@@ -121,14 +144,21 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const episode = params.episode;
   const postsDirectory = path.join(process.cwd(), `manga/${episode}`);
-  const images = fs.readdirSync(postsDirectory);
+
+  // read directory to get image paths
+  // filter out junk files like .DS_Store
+  // natural sort files names in ascending order
+  const images = fs
+    .readdirSync(postsDirectory)
+    .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
+    .sort(naturalCompare);
 
   // check if route is free episode
   const freeEpisodes = [
     "episode-1-the-mistake",
     "episode-2-the-beginning",
     "episode-3-death",
-    "episode-4",
+    "episode-4-weapons",
   ];
   const isFreeEpisode = (arr, val) => {
     return arr.some((arrVal) => val === arrVal);

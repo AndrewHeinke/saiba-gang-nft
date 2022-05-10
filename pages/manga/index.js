@@ -59,11 +59,14 @@ export default function Manga() {
                 </Link>
               </li>
               <li className={styles["manga-episode-row"]}>
-                <div className={styles["manga-thumbnail-placeholder"]}></div>
-                <Link href="/manga/episode-4">
-                  <a className={styles["manga-link"]}>
-                    Episode 4: The next episode!!!
-                  </a>
+                <Image
+                  src="/images/thumbnails/4.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                />
+                <Link href="/manga/episode-4-weapons">
+                  <a className={styles["manga-link"]}>Episode 4: Weapons</a>
                 </Link>
               </li>
               {publicKey && wallet?.data?.isSaibaHolder && (
@@ -98,9 +101,9 @@ export default function Manga() {
                     background: "#C34655",
                   }}
                 >
-                  Future manga episodes are restricted to Saiba Gang NFT
-                  holders. Please connect your wallet to verify and access the
-                  content.
+                  Future manga episodes are restricted to Saiba Gang or Kaze
+                  Collective NFT holders. Please connect your wallet to verify
+                  and access the content.
                 </p>
               )}
               {wallet?.data?.connected &&
@@ -113,7 +116,7 @@ export default function Manga() {
                       background: "#C34655",
                     }}
                   >
-                    No Saiba Gang NFTs in connected wallet.
+                    No Saiba Gang or Kaze Collective NFTs in connected wallet.
                     <br />
                     <a
                       rel="noreferrer"

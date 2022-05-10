@@ -1,11 +1,19 @@
 import styles from "styles/UserCard.module.scss";
+import Image from "next/image";
 
 export default function UserCard({ isHolder, userImg, name, loading }) {
   if (isHolder && name) {
     return (
       <div className={styles["user-card"]}>
         {userImg ? (
-          <img src={userImg} alt={name} className={styles["user-card-img"]} />
+          <Image
+            src={userImg}
+            alt={name}
+            className={styles["user-card-img"]}
+            priority
+            width={75}
+            height={75}
+          />
         ) : (
           <div className={styles["user-card-avatar-placeholder"]}></div>
         )}

@@ -84,7 +84,7 @@ export default function Roadmap() {
         <RoadmapStep
           title="Kaze Collective Drop"
           description="The evil force that occupies Wintermoon City is known as the Kaze Collective. As we flesh out the details of the Kaze Collective as a community, we will begin working on a collection of Kaze Collective members. We are planning to drop the Kaze at the end of Q1 2022. This introduction of the Kaze Collective will be a fun division within the community where we plan on having interactions between holders of both collections. We will introduce burn mechanics of current Saiba Gang NFTs to deflate the supply, and give holders the opportunity to earn free Kaze NFTs. Are you team Saiba, or team Kaze?"
-          status="active"
+          status="complete"
         />
       </div>
     </>

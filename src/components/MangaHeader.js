@@ -55,9 +55,15 @@ export default function MangaHeader() {
     mutateWallet(await fetchJSON("/api/disconnect", { method: "POST" }), false);
   };
 
-  const findValue = (arr, value) => {
+  const findValues = (arr, values) => {
     return find(arr, (elem) => {
-      return elem.data.symbol === value ? elem : undefined;
+      if (elem.data.symbol === values[0]) {
+        return elem;
+      } else if (elem.data.symbol === values[1]) {
+        return elem;
+      } else {
+        return undefined;
+      }
     });
   };
 
@@ -102,7 +108,7 @@ export default function MangaHeader() {
           publicAddress: publicKey,
           serialization: true,
         });
-        setNfts(findValue(parsedNfts, "SBAGNG"));
+        setNfts(findValues(parsedNfts, ["SBAGNG", "KAZE"]));
       }
     } catch (error) {
       console.log(error);
