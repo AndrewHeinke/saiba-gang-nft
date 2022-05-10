@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import styles from "styles/Manga.module.scss";
 import { useRouter } from "next/router";
 import { normalizeEpisodeName } from "utils/normalize-episode-name";
@@ -9,14 +7,14 @@ import Image from "next/image";
 import Head from "next/head";
 import useWallet from "../../../lib/useWallet";
 
-function naturalCompare(a, b) {
+function naturalTitleCompare(a, b) {
   var ax = [],
     bx = [];
 
-  a.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+  a.title.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
     ax.push([$1 || Infinity, $2 || ""]);
   });
-  b.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
+  b.title.replace(/(\d+)|(\D+)/g, function (_, $1, $2) {
     bx.push([$1 || Infinity, $2 || ""]);
   });
 
@@ -30,7 +28,7 @@ function naturalCompare(a, b) {
   return ax.length - bx.length;
 }
 
-const Episode = ({ images, isFree }) => {
+const Episode = ({ isFree, cloudImages }) => {
   const router = useRouter();
   const { wallet } = useWallet();
 
@@ -39,25 +37,6 @@ const Episode = ({ images, isFree }) => {
   }
 
   const { episode } = router.query;
-
-  const shimmer = (w, h) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
-    </linearGradient>
-  </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
-</svg>`;
-
-  const toBase64 = (str) =>
-    typeof window === "undefined"
-      ? Buffer.from(str).toString("base64")
-      : window.btoa(str);
 
   return (
     <>
@@ -68,19 +47,17 @@ const Episode = ({ images, isFree }) => {
       <Container className={styles["manga-container"]}>
         <h1>{normalizeEpisodeName(episode)}</h1>
         {isFree &&
-          images.map((image, idx) => {
+          cloudImages &&
+          cloudImages.map((image, idx) => {
             return (
               <div key={idx} className="manga-image-wrapper">
                 <Image
                   className="manga-image"
                   layout="fill"
+                  src={image.image}
+                  alt={image.title}
                   placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
-                  )}`}
-                  priority={idx === 0 ? true : false}
-                  src={`/images/${episode}/${image}`}
-                  alt=""
+                  blurDataURL={image.blurDataURL}
                 />
               </div>
             );
@@ -106,18 +83,16 @@ const Episode = ({ images, isFree }) => {
           )}
         {!isFree &&
           wallet?.data?.isSaibaHolder &&
-          images.map((image, idx) => {
+          cloudImages.map((image, idx) => {
             return (
               <div key={idx} className="manga-image-wrapper">
                 <Image
                   className="manga-image"
                   layout="fill"
+                  src={image.image}
+                  alt={image.title}
                   placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(800, 1130)
-                  )}`}
-                  src={`/images/${episode}/${image}`}
-                  alt=""
+                  blurDataURL={image.blurDataURL}
                 />
               </div>
             );
@@ -143,15 +118,41 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const episode = params.episode;
-  const postsDirectory = path.join(process.cwd(), `manga/${episode}`);
 
-  // read directory to get image paths
-  // filter out junk files like .DS_Store
-  // natural sort files names in ascending order
-  const images = fs
-    .readdirSync(postsDirectory)
-    .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
-    .sort(naturalCompare);
+  const cloudinaryParams = {
+    expression: `folder=saiba-gang/${episode}`,
+  };
+
+  const paramString = Object.keys(cloudinaryParams)
+    .map((key) => `${key}=${encodeURIComponent(cloudinaryParams[key])}`)
+    .join("&");
+
+  const { resources } = await fetch(
+    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/resources/search?${paramString}`,
+    {
+      headers: {
+        Authorization: `Basic ${Buffer.from(
+          process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY +
+            ":" +
+            process.env.NEXT_PUBLIC_CLOUDINARY_SECRET
+        ).toString("base64")}`,
+      },
+    }
+  ).then((r) => r.json());
+
+  const cloudImages = resources
+    .map((resource) => {
+      const { width, height } = resource;
+      return {
+        id: resource.asset_id,
+        title: resource.public_id,
+        image: resource.secure_url,
+        width,
+        height,
+        blurDataURL: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/w_640/e_blur:1000,q_1,f_auto/${resource.public_id}`,
+      };
+    })
+    .sort(naturalTitleCompare);
 
   // check if route is free episode
   const freeEpisodes = [
@@ -160,12 +161,16 @@ export async function getStaticProps({ params }) {
     "episode-3-death",
     "episode-4-weapons",
   ];
+
   const isFreeEpisode = (arr, val) => {
     return arr.some((arrVal) => val === arrVal);
   };
 
   return {
-    props: { images, isFree: isFreeEpisode(freeEpisodes, episode) },
+    props: {
+      cloudImages,
+      isFree: isFreeEpisode(freeEpisodes, episode),
+    },
   };
 }
 

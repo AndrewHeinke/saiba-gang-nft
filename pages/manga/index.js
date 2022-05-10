@@ -29,6 +29,7 @@ export default function Manga() {
                   alt=""
                   width={100}
                   height={100}
+                  priority
                 />
                 <Link href="/manga/episode-1-the-mistake">
                   <a className={styles["manga-link"]}>Episode 1: The Mistake</a>
@@ -40,6 +41,7 @@ export default function Manga() {
                   alt=""
                   width={100}
                   height={100}
+                  priority
                 />
                 <Link href="/manga/episode-2-the-beginning">
                   <a className={styles["manga-link"]}>
@@ -53,6 +55,7 @@ export default function Manga() {
                   alt=""
                   width={100}
                   height={100}
+                  priority
                 />
                 <Link href="/manga/episode-3-death">
                   <a className={styles["manga-link"]}>Episode 3: Death</a>
@@ -64,6 +67,7 @@ export default function Manga() {
                   alt=""
                   width={100}
                   height={100}
+                  priority
                 />
                 <Link href="/manga/episode-4-weapons">
                   <a className={styles["manga-link"]}>Episode 4: Weapons</a>
@@ -75,21 +79,9 @@ export default function Manga() {
                     <div
                       className={styles["manga-thumbnail-placeholder"]}
                     ></div>
-                    <Link href="/manga/episode-5">
-                      <a className={styles["manga-link"]}>
-                        Episode 5: Foo bar baz
-                      </a>
-                    </Link>
-                  </li>
-                  <li className={styles["manga-episode-row"]}>
-                    <div
-                      className={styles["manga-thumbnail-placeholder"]}
-                    ></div>
-                    <Link href="/manga/episode-6">
-                      <a className={styles["manga-link"]}>
-                        Episode 6: Dun dun dunnnn
-                      </a>
-                    </Link>
+                    <a className={styles["manga-link"]} href="javascript:;">
+                      Episode 5: Coming Soon!
+                    </a>
                   </li>
                 </>
               )}

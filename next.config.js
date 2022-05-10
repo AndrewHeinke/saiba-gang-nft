@@ -6,6 +6,7 @@ module.exports = {
       "media.graphassets.com",
       "arweave.net",
       "www.arweave.net",
+      "res.cloudinary.com",
     ],
   },
 };
