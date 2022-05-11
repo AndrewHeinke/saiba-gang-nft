@@ -562,6 +562,9 @@ ol {
 }
 
 .breadcrumbs {
+  &-wrapper {
+    min-height: 62px;
+  }
   display: flex;
   justify-content: center;
   ol {

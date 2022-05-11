@@ -136,13 +136,15 @@ export default function MangaHeader() {
         </div>
       </header>
       <Container>
-        <Breadcrumbs
-          containerClassName="breadcrumbs"
-          replaceCharacterList={[{ from: "-", to: " " }]}
-          labelsToUppercase
-          activeItemClassName="current-page"
-          rootLabel="Home"
-        />
+        <div className="breadcrumbs-wrapper">
+          <Breadcrumbs
+            containerClassName="breadcrumbs"
+            replaceCharacterList={[{ from: "-", to: " " }]}
+            labelsToUppercase
+            activeItemClassName="current-page"
+            rootLabel="Home"
+          />
+        </div>
       </Container>
     </>
   );

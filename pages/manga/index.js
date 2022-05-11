@@ -76,12 +76,16 @@ export default function Manga() {
               {publicKey && wallet?.data?.isSaibaHolder && (
                 <>
                   <li className={styles["manga-episode-row"]}>
-                    <div
-                      className={styles["manga-thumbnail-placeholder"]}
-                    ></div>
-                    <a className={styles["manga-link"]} href="javascript:;">
-                      Episode 5: Coming Soon!
-                    </a>
+                    <Image
+                      src="/images/thumbnails/5.png"
+                      alt=""
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                    <Link href="/manga/episode-5">
+                      <a className={styles["manga-link"]}>Episode 5</a>
+                    </Link>
                   </li>
                 </>
               )}

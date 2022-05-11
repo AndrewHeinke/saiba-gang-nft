@@ -110,7 +110,6 @@ export async function getStaticPaths() {
       { params: { episode: "episode-3-death" } },
       { params: { episode: "episode-4-weapons" } },
       { params: { episode: "episode-5" } },
-      { params: { episode: "episode-6" } },
     ],
     fallback: true,
   };
