@@ -562,6 +562,9 @@ ol {
 }
 
 .breadcrumbs {
+  &-wrapper {
+    min-height: 62px;
+  }
   display: flex;
   justify-content: center;
   ol {
@@ -623,6 +626,13 @@ ol {
   }
 }
 
+.wallet-adapter-button {
+  @include respond-below(xxs) {
+    padding: 0.5rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
 .author-bio-img {
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.75) !important;
@@ -678,5 +688,40 @@ ol {
   hyphens: auto;
   &:hover {
     color: var(--pink);
+  }
+}
+
+.manga-image-wrapper {
+  width: 100%;
+  position: relative;
+
+  > div {
+    position: unset !important;
+  }
+
+  .manga-image {
+    object-fit: contain;
+    width: 100% !important;
+    position: relative !important;
+    height: unset !important;
+  }
+}
+
+.wallet-adapter-modal-title {
+  font-family: "BergenMono-Regular", sans-serif !important;
+}
+
+.text-dim {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-container {
+  max-width: 1600px;
+  padding: 0 1rem;
+  margin: 6rem auto 0;
+  footer {
+    display: flex;
+    justify-content: center;
+    padding: 0;
   }
 }

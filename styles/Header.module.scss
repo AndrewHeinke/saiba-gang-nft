@@ -11,7 +11,7 @@
   right: 0;
   z-index: 999;
   &-container {
-    max-width: 1200px;
+    max-width: 1600px;
     padding: 0 1rem;
     margin: 0 auto;
     display: flex;
@@ -28,7 +28,7 @@
     margin-right: 3rem;
     color: var(--pink);
     flex-shrink: 0;
-    @include respond-below(md) {
+    @include respond-below(lg) {
       width: 100px;
       margin-right: auto;
     }
@@ -47,7 +47,7 @@
     transition: ease 0.3s;
     outline: none;
 
-    @include respond-below(md) {
+    @include respond-below(lg) {
       margin-left: auto;
     }
 
@@ -68,7 +68,7 @@
     align-items: center;
     padding: 0;
     margin: 0;
-    @include respond-below(md) {
+    @include respond-below(lg) {
       background-color: #13153f;
       justify-content: space-between;
       margin-left: -1rem;
@@ -131,7 +131,7 @@
       height: 1.5em;
       width: 1.5em;
       color: white;
-      @include respond-below(md) {
+      @include respond-below(lg) {
         margin-left: 1rem;
       }
       &:hover {
