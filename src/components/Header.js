@@ -118,28 +118,34 @@ export default function Header({ size }) {
         <div className={styles["mobile-header-container"]}>
           <div className={styles["mobile-header-top"]}>
             <Logo onClick={() => scroll.scrollToTop()} />
-            <a
-              href="https://medium.com/@saibagang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Medium className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://twitter.com/SaibaGang"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter className={styles["header-link-social"]} />
-            </a>
-            <a
-              href="https://discord.gg/aRPTxj5FMA"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ marginRight: "1rem" }}
-            >
-              <Discord className={styles["header-link-social"]} />
-            </a>
+
+            {size?.width > 480 && (
+              <>
+                <a
+                  href="https://medium.com/@saibagang"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Medium className={styles["header-link-social"]} />
+                </a>
+                <a
+                  href="https://twitter.com/SaibaGang"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Twitter className={styles["header-link-social"]} />
+                </a>
+                <a
+                  href="https://discord.gg/aRPTxj5FMA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ marginRight: "1rem" }}
+                >
+                  <Discord className={styles["header-link-social"]} />
+                </a>
+              </>
+            )}
+
             <WalletMultiButton />
           </div>
           <nav>

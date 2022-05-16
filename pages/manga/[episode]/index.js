@@ -2,6 +2,7 @@ import styles from "styles/Manga.module.scss";
 import { useRouter } from "next/router";
 import { normalizeEpisodeName } from "utils/normalize-episode-name";
 import Container from "components/Container";
+import Footer from "components/Footer";
 import MangaHeader from "components/MangaHeader";
 import Image from "next/image";
 import Head from "next/head";
@@ -98,6 +99,9 @@ const Episode = ({ isFree, cloudImages }) => {
             );
           })}
       </Container>
+      <div className="footer-container">
+        <Footer />
+      </div>
     </>
   );
 };
@@ -109,7 +113,7 @@ export async function getStaticPaths() {
       { params: { episode: "episode-2-the-beginning" } },
       { params: { episode: "episode-3-death" } },
       { params: { episode: "episode-4-weapons" } },
-      { params: { episode: "episode-5" } },
+      { params: { episode: "episode-5-they-know" } },
     ],
     fallback: true,
   };

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "styles/Manga.module.scss";
 import useWallet from "../../lib/useWallet";
+import Footer from "components/Footer";
 import { Container, Row, Col } from "react-grid-system";
 import { useWallet as useAdaptorWallet } from "@solana/wallet-adapter-react";
 
@@ -83,8 +84,10 @@ export default function Manga() {
                       height={100}
                       priority
                     />
-                    <Link href="/manga/episode-5">
-                      <a className={styles["manga-link"]}>Episode 5</a>
+                    <Link href="/manga/episode-5-they-know">
+                      <a className={styles["manga-link"]}>
+                        Episode 5: They Know
+                      </a>
                     </Link>
                   </li>
                 </>
@@ -135,6 +138,9 @@ export default function Manga() {
           </Col>
         </Row>
       </Container>
+      <div className="footer-container">
+        <Footer />
+      </div>
     </>
   );
 }
