@@ -10,6 +10,32 @@
   left: 0;
   right: 0;
   z-index: 999;
+  &-top-banner {
+    background-color: var(--darkest);
+
+    &-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      max-width: 1600px;
+      padding: 0 1rem;
+      margin: 0 auto;
+      a {
+        margin-right: 1rem;
+      }
+      button {
+        font-size: 0.85rem;
+        height: 44px;
+        padding: 0.5rem !important;
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        &:hover {
+          background: var(--pink);
+        }
+      }
+    }
+  }
   &-container {
     max-width: 1600px;
     padding: 0 1rem;
@@ -143,7 +169,12 @@
     display: flex;
     align-items: center;
     margin-left: auto;
+
+    ul {
+      list-style: none;
+    }
     a {
+      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
