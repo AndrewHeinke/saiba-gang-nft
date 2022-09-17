@@ -117,6 +117,7 @@ export async function getStaticPaths() {
       { params: { episode: "episode-6-alpha" } },
       { params: { episode: "episode-7-initiation" } },
       { params: { episode: "episode-8-secrets" } },
+      { params: { episode: "episode-9-the-race" } },
     ],
     fallback: true,
   };

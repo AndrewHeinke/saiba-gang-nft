@@ -128,6 +128,20 @@ export default function Manga() {
                       <a className={styles["manga-link"]}>Episode 8: Secrets</a>
                     </Link>
                   </li>
+                  <li className={styles["manga-episode-row"]}>
+                    <Image
+                      src="/images/thumbnails/9.png"
+                      alt=""
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                    <Link href="/manga/episode-9-the-race">
+                      <a className={styles["manga-link"]}>
+                        Episode 9: The Race
+                      </a>
+                    </Link>
+                  </li>
                 </>
               )}
               {!wallet?.data?.connected && (
