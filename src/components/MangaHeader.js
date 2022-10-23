@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   getParsedNftAccountsByOwner,
   isValidSolanaAddress,
+  createConnectionConfig,
 } from "@nfteyez/sol-rayz";
 import useWallet from "../../lib/useWallet";
 import fetchJSON from "../../lib/fetchJSON";
@@ -107,6 +108,9 @@ export default function MangaHeader() {
         const parsedNfts = await getParsedNftAccountsByOwner({
           publicAddress: publicKey,
           serialization: true,
+          connection: createConnectionConfig(
+            "https://try-rpc.mainnet.solana.blockdaemon.tech/"
+          ),
         });
         setNfts(findValues(parsedNfts, ["SBAGNG", "KAZE"]));
       }
