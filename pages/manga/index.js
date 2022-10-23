@@ -142,6 +142,20 @@ export default function Manga() {
                       </a>
                     </Link>
                   </li>
+                  <li className={styles["manga-episode-row"]}>
+                    <Image
+                      src="/images/thumbnails/10.png"
+                      alt=""
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                    <Link href="/manga/episode-10-closing-in">
+                      <a className={styles["manga-link"]}>
+                        Episode 10: Closing In
+                      </a>
+                    </Link>
+                  </li>
                 </>
               )}
               {!wallet?.data?.connected && (
